@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://blaf1ix5576p3"]
+[gd_scene load_steps=9 format=3 uid="uid://blaf1ix5576p3"]
 
 [ext_resource type="Script" path="res://interior/interact_zone.gd" id="1_a8rqw"]
+[ext_resource type="Shader" path="res://interior/Background.gdshader" id="2_5v6jv"]
+[ext_resource type="Texture2D" uid="uid://dicn2vqyayvcl" path="res://interior/tempBox.png" id="3_yu2kh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3xk"]
 size = Vector2(87, 62)
@@ -8,11 +10,19 @@ size = Vector2(87, 62)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic7cu"]
 size = Vector2(87, 57)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b600d"]
-size = Vector2(153, 62)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ah3bl"]
+shader = ExtResource("2_5v6jv")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = true
+shader_parameter/add_margins = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7q3j"]
-size = Vector2(152.5, 57)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oa03x"]
+size = Vector2(231.5, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tf44"]
+size = Vector2(266, 57)
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
@@ -58,20 +68,18 @@ position = Vector2(43.5, 76.5)
 shape = SubResource("RectangleShape2D_ic7cu")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
-[node name="ColorRect3" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 498.0
-offset_right = 651.0
-offset_bottom = 62.0
-color = Color(0.277528, 0.277528, 0.277528, 1)
+[node name="TempBox" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ah3bl")
+position = Vector2(609, 156)
+texture = ExtResource("3_yu2kh")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ColorRect3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TempBox"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect3/StaticBody2D"]
-position = Vector2(76.5, 31)
-shape = SubResource("RectangleShape2D_b600d")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempBox/StaticBody2D"]
+position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_oa03x")
 
-[node name="Interact Zone2" type="Area2D" parent="ColorRect3"]
+[node name="Interact Zone2" type="Area2D" parent="TempBox"]
 position = Vector2(-249, 0)
 collision_layer = 4
 collision_mask = 0
@@ -81,7 +89,7 @@ interact_label = "Box2"
 interact_type = "print_text"
 interact_value = "got"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect3/Interact Zone2"]
-position = Vector2(325.75, 76)
-shape = SubResource("RectangleShape2D_f7q3j")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempBox/Interact Zone2"]
+position = Vector2(252, 68)
+shape = SubResource("RectangleShape2D_8tf44")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)

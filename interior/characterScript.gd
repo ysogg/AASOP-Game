@@ -7,6 +7,7 @@ class_name Player extends CharacterBody2D
 @onready var interactLabel = $InteractionComponents/InteractLabel
 @onready var dash_timer: Timer = $DashTimer
 
+
 func get_input():
 		var dir = Input.get_vector("left", "right", "up", "down")
 		velocity = dir * speed
@@ -23,7 +24,8 @@ func _updateSpeed():
 		dash_timer.start(0.5)
 		
 func _interact():
-	pass
+	if all_interactions:
+		print(all_interactions[0].interact_label)
 
 func _on_dash_timer_timeout() -> void:
 	speed -= 400
@@ -40,11 +42,13 @@ func _on_interaction_area_area_entered(area):
 	update_interactions()
 
 func _on_interaction_area_area_exited(area: Area2D):
+	all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
 	all_interactions.erase(area)
 	update_interactions()
 	
 func update_interactions():
 	if all_interactions:
 		interactLabel.text = all_interactions[0].interact_label
+		all_interactions[0].get_parent().material.set_shader_parameter("width", 2)
 	else:
 		interactLabel.text = ""
