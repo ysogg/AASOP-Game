@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf3bpl6yv5ha1"]
+
+[ext_resource type="Script" path="res://src/levelgenerator/level_generator.gd" id="1_7h62x"]
+[ext_resource type="PackedScene" uid="uid://cuihurylqoxhw" path="res://src/character/character.tscn" id="2_a5jye"]
+
+[node name="LevelGenerator" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_7h62x")
+player = NodePath("CharacterBody2D")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_a5jye")]
+top_level = true
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
