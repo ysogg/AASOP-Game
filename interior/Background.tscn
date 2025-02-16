@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://blaf1ix5576p3"]
+[gd_scene load_steps=6 format=3 uid="uid://blaf1ix5576p3"]
+
+[ext_resource type="Script" path="res://interior/interact_zone.gd" id="1_a8rqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3xk"]
 size = Vector2(87, 62)
@@ -8,6 +10,9 @@ size = Vector2(87, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b600d"]
 size = Vector2(153, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7q3j"]
+size = Vector2(152.5, 57)
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
@@ -39,15 +44,22 @@ color = Color(0.277528, 0.277528, 0.277528, 1)
 position = Vector2(43.5, 31)
 shape = SubResource("RectangleShape2D_3s3xk")
 
-[node name="Area2D" type="Area2D" parent="ColorRect2"]
+[node name="Interact Zone" type="Area2D" parent="ColorRect2"]
 collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_a8rqw")
+interact_label = "Box1"
+interact_type = "print_text"
+interact_value = "got"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/Interact Zone"]
 position = Vector2(43.5, 76.5)
 shape = SubResource("RectangleShape2D_ic7cu")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 498.0
 offset_right = 651.0
 offset_bottom = 62.0
@@ -58,3 +70,18 @@ color = Color(0.277528, 0.277528, 0.277528, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect3/StaticBody2D"]
 position = Vector2(76.5, 31)
 shape = SubResource("RectangleShape2D_b600d")
+
+[node name="Interact Zone2" type="Area2D" parent="ColorRect3"]
+position = Vector2(-249, 0)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_a8rqw")
+interact_label = "Box2"
+interact_type = "print_text"
+interact_value = "got"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect3/Interact Zone2"]
+position = Vector2(325.75, 76)
+shape = SubResource("RectangleShape2D_f7q3j")
+debug_color = Color(0, 0.646164, 0.243608, 0.42)
