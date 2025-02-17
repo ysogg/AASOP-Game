@@ -31,6 +31,7 @@ func _updateSpeed():
 func _interact():
 	if all_interactions:
 		print(all_interactions[0].interact_label)
+		Global.current_score += 500
 
 		# Set number position and make it visible
 		points.global_position = global_position + Vector2(700, 200)  # Adjust position
