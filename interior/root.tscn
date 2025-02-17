@@ -1,7 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8iersnlh0kwc"]
+[gd_scene load_steps=13 format=3 uid="uid://b8iersnlh0kwc"]
 
 [ext_resource type="PackedScene" uid="uid://blaf1ix5576p3" path="res://interior/Background.tscn" id="1_7qruk"]
 [ext_resource type="PackedScene" uid="uid://cyv0kifia645j" path="res://interior/CharacterScreen.tscn" id="2_jwi68"]
+[ext_resource type="Texture2D" uid="uid://dgj0ypedohwre" path="res://interior/ezgif-split/guy000.png" id="3_5desx"]
+[ext_resource type="Texture2D" uid="uid://b43bnmvfn6oul" path="res://interior/ezgif-split/guy001.png" id="4_t03cb"]
+[ext_resource type="Texture2D" uid="uid://2tbym1m3e8hc" path="res://interior/ezgif-split/guy002.png" id="5_7b7vw"]
+[ext_resource type="Texture2D" uid="uid://bl7e0yd4tmq3u" path="res://interior/ezgif-split/guy003.png" id="6_yo4rj"]
+[ext_resource type="Texture2D" uid="uid://bc363kp311nn8" path="res://interior/ezgif-split/guy004.png" id="7_aradh"]
+[ext_resource type="Texture2D" uid="uid://bdfwp12hvdta0" path="res://interior/ezgif-split/guy005.png" id="8_c2pp3"]
+[ext_resource type="Texture2D" uid="uid://sp02rexddyww" path="res://interior/ezgif-split/guy006.png" id="9_yvg2i"]
+[ext_resource type="Texture2D" uid="uid://cjvs86xbknv74" path="res://interior/ezgif-split/guy007.png" id="10_o0uo2"]
+[ext_resource type="Texture2D" uid="uid://c6nsfmopr50we" path="res://interior/character/pic.png" id="11_su1cs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8u8g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5desx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t03cb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7b7vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yo4rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aradh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c2pp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yvg2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_o0uo2")
+}],
+"loop": false,
+"name": &"run",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_su1cs")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,6 +61,12 @@ offset_right = 1536.0
 offset_bottom = 864.0
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_jwi68")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(625, 316)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_u8u8g")
+animation = &"stand"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)

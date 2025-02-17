@@ -6,11 +6,12 @@ class_name Player extends CharacterBody2D
 @onready var all_interactions = []
 @onready var interactLabel = $InteractionComponents/InteractLabel
 @onready var dash_timer: Timer = $DashTimer
-
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func get_input():
 		var dir = Input.get_vector("left", "right", "up", "down")
 		velocity = dir * speed
+			
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
@@ -33,8 +34,15 @@ func _on_dash_timer_timeout() -> void:
 
 func _physics_process(delta):
 	get_input()
+	
+	if velocity.length() > 0:
+		animated_sprite.play("run")
+		if velocity.x != 0:
+			animated_sprite.flip_h = velocity.x < 0
+	else:
+		animated_sprite.play("stand")
+	
 	move_and_slide()
-
 
 
 func _on_interaction_area_area_entered(area):
