@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnbx6cph0anuo"]
+
+[ext_resource type="PackedScene" uid="uid://28c5e34cmf0d" path="res://Driving/Scenes/shawama_truck_driver.tscn" id="1_qrson"]
+
+[node name="Racer" type="Node2D"]
+
+[node name="ShawamaTruckDriver" parent="." instance=ExtResource("1_qrson")]

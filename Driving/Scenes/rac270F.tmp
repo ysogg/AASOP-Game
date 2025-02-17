@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dnbx6cph0anuo"]
+
+[node name="Racer" type="Node2D"]
