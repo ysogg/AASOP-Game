@@ -3,6 +3,10 @@ class_name Player extends CharacterBody2D
 @export var speed = 400
 @export var max_speed = 800
 
+@onready var points = $points
+@onready var number_sprite = $points/NumberSprite
+@onready var anim_player = $points/NumberSprite/AnimationPlayer  
+
 @onready var all_interactions = []
 @onready var interactLabel = $InteractionComponents/InteractLabel
 @onready var dash_timer: Timer = $DashTimer
@@ -28,13 +32,21 @@ func _interact():
 	if all_interactions:
 		print(all_interactions[0].interact_label)
 
+		# Set number position and make it visible
+		points.global_position = global_position + Vector2(700, 200)  # Adjust position
+		points.visible = true  
+		number_sprite.visible = true
+		# Play animation to float up and disappear
+		anim_player.play("float")
+
 func _on_dash_timer_timeout() -> void:
 	speed -= 400
 
 
 func _physics_process(delta):
 	get_input()
-	
+	if animated_sprite == null:
+		print("ERROR: animated_sprite is null!")  # Debugging
 	if velocity.length() > 0:
 		animated_sprite.play("run")
 		if velocity.x != 0:
