@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8iersnlh0kwc"]
+[gd_scene load_steps=25 format=3 uid="uid://b8iersnlh0kwc"]
 
 [ext_resource type="PackedScene" uid="uid://blaf1ix5576p3" path="res://interior/Background.tscn" id="1_7qruk"]
 [ext_resource type="PackedScene" uid="uid://cyv0kifia645j" path="res://interior/CharacterScreen.tscn" id="2_jwi68"]
@@ -12,7 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://cjvs86xbknv74" path="res://interior/ezgif-split/guy007.png" id="10_o0uo2"]
 [ext_resource type="Texture2D" uid="uid://c6nsfmopr50we" path="res://interior/character/pic.png" id="11_su1cs"]
 [ext_resource type="Script" path="res://interior/points.gd" id="12_7ucsl"]
+[ext_resource type="Texture2D" uid="uid://cnltd54d3f2ih" path="res://interior/character/guy009.png" id="12_c34me"]
 [ext_resource type="Texture2D" uid="uid://qug60t575vpa" path="res://interior/character/ffe5462d56a4dbdee87e91d98446e711.png" id="12_m78n2"]
+[ext_resource type="Texture2D" uid="uid://ccvvvmxj0237h" path="res://interior/character/guy010.png" id="13_idurp"]
+[ext_resource type="Texture2D" uid="uid://dl7eq1epyw1md" path="res://interior/character/guy011.png" id="14_tmosd"]
+[ext_resource type="Texture2D" uid="uid://curdbl707ptmu" path="res://interior/character/guy012.png" id="15_17vpd"]
+[ext_resource type="Texture2D" uid="uid://deo3gsnt6x4bn" path="res://interior/character/guy013.png" id="16_1gm6e"]
+[ext_resource type="Texture2D" uid="uid://c7ixaljd67k8i" path="res://interior/character/guy014.png" id="17_5c5n6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u8u8g"]
 animations = [{
@@ -48,10 +54,46 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("11_su1cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_su1cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_su1cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_c34me")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_idurp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tmosd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_17vpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1gm6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5c5n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_su1cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_su1cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_su1cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_su1cs")
 }],
 "loop": true,
 "name": &"stand",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_56tck"]
@@ -162,6 +204,7 @@ position = Vector2(624, 313)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_u8u8g")
 animation = &"stand"
+frame_progress = 0.607315
 
 [node name="points" type="Node2D" parent="CharacterBody2D"]
 position = Vector2(-39, 7)
