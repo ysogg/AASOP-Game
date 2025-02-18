@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://blaf1ix5576p3"]
+[gd_scene load_steps=15 format=3 uid="uid://blaf1ix5576p3"]
 
 [ext_resource type="Script" path="res://interior/interact_zone.gd" id="1_a8rqw"]
 [ext_resource type="Shader" path="res://interior/Background.gdshader" id="2_5v6jv"]
 [ext_resource type="Texture2D" uid="uid://dicn2vqyayvcl" path="res://interior/tempBox.png" id="3_yu2kh"]
 [ext_resource type="Script" path="res://interior/score_labels.gd" id="4_ri5i1"]
+[ext_resource type="Texture2D" uid="uid://dj8ytih5q3qdt" path="res://interior/itemSpot.png" id="5_axv23"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5rj6g"]
 shader = ExtResource("2_5v6jv")
@@ -32,6 +33,20 @@ size = Vector2(231.5, 152)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tf44"]
 size = Vector2(266, 57)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eme56"]
+shader = ExtResource("2_5v6jv")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = true
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tauv1"]
+size = Vector2(196, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd7tg"]
+size = Vector2(268, 249.75)
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
@@ -67,13 +82,19 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("1_a8rqw")
 interact_label = "Box1"
-interact_type = "print_text"
-interact_value = "got"
+container_type = "Plates"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box1/Interact Zone"]
 position = Vector2(5, 72.25)
 shape = SubResource("RectangleShape2D_ic7cu")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
+
+[node name="Label" type="Label" parent="Box1"]
+offset_left = -29.0
+offset_top = -28.0
+offset_right = 18.0
+offset_bottom = -5.0
+text = "Plates"
 
 [node name="Box2" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ah3bl")
@@ -93,13 +114,19 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("1_a8rqw")
 interact_label = "Box2"
-interact_type = "print_text"
-interact_value = "got"
+container_type = "Wraps"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box2/Interact Zone2"]
 position = Vector2(252, 68)
 shape = SubResource("RectangleShape2D_8tf44")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
+
+[node name="Label" type="Label" parent="Box2"]
+offset_left = -27.0
+offset_top = -15.0
+offset_right = 23.0
+offset_bottom = 8.0
+text = "Wraps"
 
 [node name="ScoreLabels" type="StaticBody2D" parent="."]
 
@@ -110,3 +137,40 @@ offset_right = 1447.0
 offset_bottom = 65.0
 text = "Score: 0"
 script = ExtResource("4_ri5i1")
+
+[node name="ItemSpot" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_eme56")
+position = Vector2(1633, 619)
+scale = Vector2(1.96, 1.96)
+texture = ExtResource("5_axv23")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="ItemSpot"]
+position = Vector2(-740.306, -277.041)
+scale = Vector2(0.510204, 0.510204)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemSpot/StaticBody2D2"]
+position = Vector2(1451, 543)
+shape = SubResource("RectangleShape2D_tauv1")
+
+[node name="Interact Zone2" type="Area2D" parent="ItemSpot"]
+position = Vector2(-740.306, -277.041)
+scale = Vector2(0.510204, 0.510204)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_a8rqw")
+interact_label = "Box3"
+container_type = "Plates"
+item_provider = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemSpot/Interact Zone2"]
+position = Vector2(1454, 545.125)
+shape = SubResource("RectangleShape2D_dd7tg")
+debug_color = Color(0, 0.646164, 0.243608, 0.42)
+
+[node name="Label" type="Label" parent="ItemSpot"]
+offset_left = -44.898
+offset_top = -15.3061
+offset_right = 46.102
+offset_bottom = 7.69386
+text = "Plate Depot"

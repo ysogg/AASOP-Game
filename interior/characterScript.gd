@@ -30,15 +30,34 @@ func _updateSpeed():
 		
 func _interact():
 	if all_interactions:
-		print(all_interactions[0].interact_label)
-		Global.current_score += 500
+		if all_interactions[0].item_provider:
+			if Global.held_object:
+				#already holding something, either swap or drop
+				pass
+			#get item
+			else:
+				Global.held_object = all_interactions[0].container_type
+				print("Picked up: " + Global.held_object)
 
-		# Set number position and make it visible
-		points.global_position = global_position + Vector2(700, 200)  # Adjust position
-		points.visible = true  
-		number_sprite.visible = true
-		# Play animation to float up and disappear
-		anim_player.play("float")
+		else:
+			if all_interactions[0].container_status == "empty":
+				#deposit item if correct type
+				if all_interactions[0].container_type == Global.held_object:
+					print("correct type")
+					all_interactions[0].container_status = "full"
+					Global.current_score += 500
+
+					# Set number position and make it visible
+					points.global_position = global_position + Vector2(700, 200)  # Adjust position
+					points.visible = true  
+					number_sprite.visible = true
+					# Play animation to float up and disappear
+					anim_player.play("float")
+			else:
+				print("container full")
+	else:
+		pass
+#		drop item?
 
 func _on_dash_timer_timeout() -> void:
 	speed -= 400

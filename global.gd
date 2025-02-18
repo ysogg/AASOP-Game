@@ -4,6 +4,8 @@ var current_scene = null
 
 var current_score: int
 
+var held_object: String
+
 
 func _ready():
 	var root = get_tree().root
