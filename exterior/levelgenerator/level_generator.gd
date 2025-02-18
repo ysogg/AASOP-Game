@@ -3,7 +3,7 @@ class_name LevelGenerator
 
 @export var player: CharacterBody2D
 
-const ROAD_SCENE: PackedScene = preload("res://src/levelgenerator/road_chunk.tscn")
+const ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/road_chunk.tscn")
 const TILE_SIZE: int = 32
 
 var loaded_chunks: Array[TileMapLayer] = []
@@ -12,7 +12,7 @@ var chunk_width: int = 10 # in tiles
 var chunk_size: int = chunk_height * TILE_SIZE
 
 #how many chunks are loaded
-var road_length: int = 5
+var road_length: int = 7
 
 func _ready() -> void:
 	#load initial 3 chunks

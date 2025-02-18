@@ -35,12 +35,12 @@ func _physics_process(delta: float) -> void:
 	
 func get_input() -> void:
 	var turn = 0
-	if Input.is_action_pressed("steer_left"):
+	if Input.is_action_pressed("move_right"):
 		turn = 1
-	if Input.is_action_pressed("steer_right"):
+	if Input.is_action_pressed("move_left"):
 		turn = -1
 	steer_direction = turn * turn_angle
-	velocity = transform.x * -500
+	velocity = transform.x * -700
 	
 func calculate_steering(delta) -> void:
 	var rear_wheel = position - transform.x * wheel_base/2.0
@@ -52,6 +52,3 @@ func calculate_steering(delta) -> void:
 		new_heading.x = 0
 	velocity = new_heading * velocity.length()
 	rotation = new_heading.angle()
-	
-func _on_timer_timeout() -> void:
-	state = "Driving"

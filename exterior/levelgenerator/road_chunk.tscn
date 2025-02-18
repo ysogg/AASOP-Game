@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://broh7go2ycmu0"]
 
-[ext_resource type="Texture2D" uid="uid://u3d5vw7mjoy" path="res://src/assets/road_grass_set.png" id="1_mcohb"]
-[ext_resource type="Script" path="res://src/levelgenerator/road_chunk.gd" id="2_h2lua"]
+[ext_resource type="Texture2D" uid="uid://u3d5vw7mjoy" path="res://exterior/assets/road_grass_set.png" id="1_mcohb"]
+[ext_resource type="Script" path="res://exterior/levelgenerator/road_chunk.gd" id="2_h2lua"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g188x"]
 texture = ExtResource("1_mcohb")
