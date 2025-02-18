@@ -3,7 +3,8 @@ class_name LevelGenerator
 
 @export var player: CharacterBody2D
 
-const ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/road_chunk.tscn")
+const STRAIGHT_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/straight_road_chunk.tscn")
+const CURVED_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/curve_up_road_chunk.tscn")
 const TILE_SIZE: int = 32
 
 var loaded_chunks: Array[TileMapLayer] = []
@@ -20,13 +21,19 @@ func _ready() -> void:
 		load_chunk()
 
 func load_chunk() -> void:
-	var chunk = ROAD_SCENE.instantiate()
+	# this portion I want to change to pull different road tiles
+	var chunk 
+	
+	if randi() % 2 == 0:
+		chunk = STRAIGHT_ROAD_SCENE.instantiate()
+	else:
+		chunk = CURVED_ROAD_SCENE.instantiate()
 	#load first chunk one chunk_size behind the player
 	if loaded_chunks.is_empty():
-		chunk.global_position = Vector2(2 * chunk_size, 0)
+		chunk.global_position = Vector2( -ceil(road_length/2) * chunk_size, 0)
 	else:
 		var last_chunk = loaded_chunks[-1]
-		chunk.global_position = last_chunk.global_position - Vector2(chunk_size, 0)
+		chunk.global_position = last_chunk.global_position + Vector2(chunk_size, 0)
 	loaded_chunks.append(chunk)
 	call_deferred("add_child", chunk)
 	# Ensure the chunk emits signals

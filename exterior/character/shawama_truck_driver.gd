@@ -36,11 +36,11 @@ func _physics_process(delta: float) -> void:
 func get_input() -> void:
 	var turn = 0
 	if Input.is_action_pressed("move_right"):
-		turn = 1
-	if Input.is_action_pressed("move_left"):
 		turn = -1
+	if Input.is_action_pressed("move_left"):
+		turn = 1
 	steer_direction = turn * turn_angle
-	velocity = transform.x * -700 # adjust velocity here
+	velocity = transform.x * 700 # adjust velocity here
 	
 func calculate_steering(delta) -> void:
 	var rear_wheel = position - transform.x * wheel_base/2.0
@@ -48,7 +48,7 @@ func calculate_steering(delta) -> void:
 	rear_wheel += velocity * delta
 	front_wheel += velocity.rotated(steer_direction) * delta
 	var new_heading = (front_wheel - rear_wheel).normalized()
-	if(new_heading.x >= 0):
+	if(new_heading.x < 0):
 		new_heading.x = 0
 	velocity = new_heading * velocity.length()
 	rotation = new_heading.angle()
