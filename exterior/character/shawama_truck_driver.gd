@@ -1,21 +1,21 @@
 extends CharacterBody2D
 
-var wheel_base = 90
-var turn_angle = 10
+# CONSTS for car phsyics
+var wheel_base = 90 # length of the sprite basically
+var turn_angle = 10 
 var steer_direction
-var state
-var timer : Timer
+var state # current 2 state system, Driving and Bouncing
+var timer : Timer # timer for how long each bounce will last
 
 func _ready():
 	timer = Timer.new()
-	timer.set_wait_time(0.3)
+	timer.set_wait_time(0.3) # change this to adjust bounce time
 	timer.set_one_shot(true)
 
 	add_child(timer)
 
 func _physics_process(delta: float) -> void:
 	
-	print(state)
 	if(timer.is_stopped()):
 		state  = "Driving"
 	
@@ -27,10 +27,10 @@ func _physics_process(delta: float) -> void:
 	
 	if collided:
 		if state == "Driving":
-			state = "Colliding"
+			state = "Bouncing"
 		timer.start()
 		velocity = velocity.bounce(collided.get_normal())
-		#rotation = collided.get_angle() * -1
+
 	
 	
 func get_input() -> void:
@@ -40,7 +40,7 @@ func get_input() -> void:
 	if Input.is_action_pressed("move_left"):
 		turn = -1
 	steer_direction = turn * turn_angle
-	velocity = transform.x * -700
+	velocity = transform.x * -700 # adjust velocity here
 	
 func calculate_steering(delta) -> void:
 	var rear_wheel = position - transform.x * wheel_base/2.0
