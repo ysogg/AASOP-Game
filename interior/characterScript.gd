@@ -79,6 +79,8 @@ func _physics_process(delta):
 
 
 func _on_interaction_area_area_entered(area):
+	if all_interactions:
+		all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
 	all_interactions.insert(0, area)
 	update_interactions()
 

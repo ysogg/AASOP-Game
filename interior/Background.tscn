@@ -18,7 +18,7 @@ shader_parameter/add_margins = true
 size = Vector2(231.5, 152)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic7cu"]
-size = Vector2(268, 75.5)
+size = Vector2(245, 75.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ah3bl"]
 shader = ExtResource("2_5v6jv")
@@ -32,7 +32,7 @@ shader_parameter/add_margins = true
 size = Vector2(231.5, 152)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tf44"]
-size = Vector2(266, 57)
+size = Vector2(252, 75.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eme56"]
 shader = ExtResource("2_5v6jv")
@@ -99,7 +99,7 @@ interact_label = "Box1"
 container_type = "Plates"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box1/Interact Zone"]
-position = Vector2(5, 72.25)
+position = Vector2(-6.5, 72.25)
 shape = SubResource("RectangleShape2D_ic7cu")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -112,7 +112,7 @@ text = "Plates"
 
 [node name="Box2" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ah3bl")
-position = Vector2(609, 156)
+position = Vector2(417, 77)
 texture = ExtResource("3_yu2kh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Box2"]
@@ -131,7 +131,7 @@ interact_label = "Box2"
 container_type = "Wraps"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box2/Interact Zone2"]
-position = Vector2(252, 68)
+position = Vector2(260, 71.25)
 shape = SubResource("RectangleShape2D_8tf44")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -141,6 +141,7 @@ offset_top = -15.0
 offset_right = 23.0
 offset_bottom = 8.0
 text = "Wraps"
+metadata/_edit_use_anchors_ = true
 
 [node name="ScoreLabels" type="StaticBody2D" parent="."]
 
