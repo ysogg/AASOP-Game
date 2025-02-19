@@ -31,15 +31,16 @@ func _physics_process(delta: float) -> void:
 		timer.start()
 		velocity = velocity.bounce(collided.get_normal())
 
-	
-	
 func get_input() -> void:
 	var turn = 0
 	if Input.is_action_pressed("move_right"):
 		turn = -1
 	if Input.is_action_pressed("move_left"):
 		turn = 1
-	steer_direction = turn * turn_angle
+	if turn == 0:
+		steer_direction = -1 * (Vector2(100, 0) + velocity).angle()
+	else:
+		steer_direction = turn * turn_angle
 	velocity = transform.x * 700 # adjust velocity here
 	
 func calculate_steering(delta) -> void:
