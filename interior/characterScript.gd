@@ -56,9 +56,10 @@ func _interact():
 			else:
 				print("container full")
 	else:
-		pass
 #		drop item?
-
+		print("Dropped item: " + Global.held_object)
+		Global.held_object = ""
+		
 func _on_dash_timer_timeout() -> void:
 	speed -= 400
 
