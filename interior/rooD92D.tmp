@@ -221,11 +221,10 @@ libraries = {
 "": SubResource("AnimationLibrary_qfn7s")
 }
 
+[node name="FloorItem" type="Sprite2D" parent="CharacterBody2D"]
+script = ExtResource("20_pwi6b")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
-[node name="FloorItem" type="Node2D" parent="."]
-position = Vector2(-3, 2)
-script = ExtResource("20_pwi6b")
-
-[connection signal="dropped_item" from="CharacterBody2D" to="FloorItem" method="_on_character_body_2d_dropped_item"]
+[connection signal="dropped_item" from="CharacterBody2D" to="CharacterBody2D/FloorItem" method="_on_character_body_2d_dropped_item"]

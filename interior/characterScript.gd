@@ -12,6 +12,8 @@ class_name Player extends CharacterBody2D
 @onready var dash_timer: Timer = $DashTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+signal dropped_item
+
 func get_input():
 		var dir = Input.get_vector("left", "right", "up", "down")
 		velocity = dir * speed
@@ -56,8 +58,7 @@ func _interact():
 			else:
 				print("container full")
 	else:
-#		drop item?
-		print("Dropped item: " + Global.held_object)
+		emit_signal("dropped_item", Global.held_object, position)
 		Global.held_object = ""
 		
 func _on_dash_timer_timeout() -> void:
