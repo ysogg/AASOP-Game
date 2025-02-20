@@ -13,6 +13,7 @@ class_name Player extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 signal dropped_item
+signal picked_up_item
 
 func get_input():
 		var dir = Input.get_vector("left", "right", "up", "down")
@@ -40,13 +41,16 @@ func _interact():
 			else:
 				Global.held_object = all_interactions[0].container_type
 				print("Picked up: " + Global.held_object)
-
+		elif all_interactions[0].item_type != "none":
+			#inside ground item zone
+			picked_up_item.emit(all_interactions[0], all_interactions[0].item_type)
 		else:
 			if all_interactions[0].container_status == "empty":
 				#deposit item if correct type
 				if all_interactions[0].container_type == Global.held_object:
 					print("correct type")
 					all_interactions[0].container_status = "full"
+					Global.held_object = ""
 					Global.current_score += 500
 
 					# Set number position and make it visible
@@ -58,8 +62,10 @@ func _interact():
 			else:
 				print("container full")
 	else:
-		emit_signal("dropped_item", Global.held_object, position)
-		Global.held_object = ""
+		if Global.held_object:
+			dropped_item.emit(Global.held_object, position)
+		else:
+			print("empty hands empty hands!!")
 		
 func _on_dash_timer_timeout() -> void:
 	speed -= 400
@@ -80,19 +86,21 @@ func _physics_process(delta):
 
 
 func _on_interaction_area_area_entered(area):
-	if all_interactions:
+	if all_interactions && area.interact_label != "GroundItem":
 		all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
 	all_interactions.insert(0, area)
 	update_interactions()
 
 func _on_interaction_area_area_exited(area: Area2D):
-	all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
+	if area.interact_label != "GroundItem":
+		all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
 	all_interactions.erase(area)
 	update_interactions()
 	
 func update_interactions():
 	if all_interactions:
 		interactLabel.text = all_interactions[0].interact_label
-		all_interactions[0].get_parent().material.set_shader_parameter("width", 2)
+		if interactLabel.text != "GroundItem":
+			all_interactions[0].get_parent().material.set_shader_parameter("width", 2)
 	else:
 		interactLabel.text = ""
