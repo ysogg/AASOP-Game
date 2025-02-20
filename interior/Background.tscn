@@ -199,7 +199,6 @@ texture = ExtResource("5_axv23")
 [node name="StaticBody2D" type="StaticBody2D" parent="ItemSpotWraps"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemSpotWraps/StaticBody2D"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_oi2ys")
 
 [node name="Interact Zone2" type="Area2D" parent="ItemSpotWraps"]
@@ -214,7 +213,6 @@ item_provider = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemSpotWraps/Interact Zone2"]
 position = Vector2(247.473, -1.27287)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_oe05d")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
