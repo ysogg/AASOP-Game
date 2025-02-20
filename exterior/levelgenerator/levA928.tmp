@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf3bpl6yv5ha1"]
+
+[ext_resource type="Script" path="res://src/levelgenerator/level_generator.gd" id="1_7h62x"]
+[ext_resource type="Texture2D" uid="uid://u3d5vw7mjoy" path="res://src/assets/road_grass_set.png" id="2_5hqli"]
+[ext_resource type="PackedScene" uid="uid://cuihurylqoxhw" path="res://src/levelgenerator/character.tscn" id="2_a5jye"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wsg8j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ut4hy"]
+texture = ExtResource("2_5hqli")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5i12l"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_ut4hy")
+
+[node name="LevelGenerator" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_7h62x")
+noise = SubResource("FastNoiseLite_wsg8j")
+player = NodePath("CharacterBody2D")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_a5jye")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_set = SubResource("TileSet_5i12l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
