@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 # VARIABLES FOR CAR HANDLING
 var wheel_base = 90 # length of the sprite basically
-@export var turn_angle = 10 
+@export var SPEED = 700
+@export var TURN_ANGLE = 10 
+
 var steer_direction
 var state # current 2 state system, Driving and Bouncing
 var timer : Timer # timer for how long each bounce will last
@@ -41,8 +43,8 @@ func get_input() -> void:
 	if turn == 0:
 		steer_direction = -1 * (Vector2(100, 0) + velocity).angle()
 	else:
-		steer_direction = turn * turn_angle
-	velocity = transform.x * 700 # adjust velocity here
+		steer_direction = turn * TURN_ANGLE
+	velocity = transform.x * SPEED # adjust velocity here
 	
 func calculate_steering(delta) -> void:
 	var rear_wheel = position - transform.x * wheel_base/2.0
@@ -67,6 +69,7 @@ func on_collision(collided) -> void:
 	velocity = velocity.bounce(collided.get_normal())
 	
 	# run the spin animation
+	#$AnimatedSprite2D.play("spin")
 	
 	# impact frame
 	var curr_time_scale = Engine.time_scale
