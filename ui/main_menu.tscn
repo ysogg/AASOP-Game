@@ -1,0 +1,130 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3eyl8fkd2i2l"]
+
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_hp2vh"]
+[ext_resource type="Theme" uid="uid://c5k0stkptikm2" path="res://ui/ui_theme.tres" id="1_iedfo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4nq8"]
+content_margin_bottom = 20.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hp2vh")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_iedfo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i4nq8")
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="PlayGame" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_iedfo")
+theme_type_variation = &"playgamebutton"
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/PlayGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/PlayGame/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/PlayGame/CenterContainer/MarginContainer"]
+layout_mode = 2
+text = "Play Game"
+
+[node name="Settings" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Settings/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Settings/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Settings
+"
+
+[node name="Credits" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Credits
+"
+
+[node name="Quit" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Quit/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Quit/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
