@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="AASOP-Game"
-
 run/main_scene="res://interior/root.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -19,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://global.gd"
+AudioManager="*res://audio/audio_manager.tscn"
+GameController="*res://gamecontroller/game_controller.tscn"
 
 [display]
 
