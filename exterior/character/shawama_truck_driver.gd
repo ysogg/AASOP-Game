@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
-# CONSTS for car phsyics
+# VARIABLES FOR CAR HANDLING
 var wheel_base = 90 # length of the sprite basically
-var turn_angle = 10 
+@export var turn_angle = 10 
 var steer_direction
 var state # current 2 state system, Driving and Bouncing
 var timer : Timer # timer for how long each bounce will last
+
+# VARIABLES FOR IMPACT FRAME ADJUSTMENT
+@export var IMPACT_TIME_SCALE = 0.2 # how slow the hit frame will be
+@export var IMPACT_DURATION_TIME = 0.3 # how long the hit frame slow will last for
 
 func _ready():
 	timer = Timer.new()
@@ -26,16 +30,13 @@ func _physics_process(delta: float) -> void:
 	var collided = move_and_collide(velocity * delta)
 	
 	if collided:
-		if state == "Driving":
-			state = "Bouncing"
-		timer.start()
-		velocity = velocity.bounce(collided.get_normal())
+		on_collision(collided)
 
 func get_input() -> void:
 	var turn = 0
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("right"):
 		turn = -1
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("left"):
 		turn = 1
 	if turn == 0:
 		steer_direction = -1 * (Vector2(100, 0) + velocity).angle()
@@ -53,3 +54,25 @@ func calculate_steering(delta) -> void:
 		new_heading.x = 0
 	velocity = new_heading * velocity.length()
 	rotation = new_heading.angle()
+	
+	
+# HERE IS WHERE THE COLLSION WORK IS TO DO DONE 
+func on_collision(collided) -> void:
+	# state stuff
+	if state == "Driving":
+		state = "Bouncing"
+	timer.start()
+	
+	# calc the bounce
+	velocity = velocity.bounce(collided.get_normal())
+	
+	# run the spin animation
+	
+	# impact frame
+	var curr_time_scale = Engine.time_scale
+	Engine.time_scale = IMPACT_TIME_SCALE 
+	await(get_tree().create_timer(IMPACT_TIME_SCALE * IMPACT_DURATION_TIME).timeout)
+	Engine.time_scale = curr_time_scale
+	
+	# ALSO PUT THE CODE HERE THAT WILL SLOSH THE TRUCK AROUND
+	

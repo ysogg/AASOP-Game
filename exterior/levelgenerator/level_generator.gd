@@ -5,21 +5,21 @@ class_name LevelGenerator
 
 # DEFAULT NO HAZARD ROAD DEFINTION
 const STRAIGHT_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/straight_road_chunk.tscn")
-
+const END_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/end_road_chunk.tscn")
 # HAZARD ROAD DEFS
-const PEDESTRIAN_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/pedestrian_road_chunk.tscn")
+#const PEDESTRIAN_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/pedestrian_road_chunk.tscn")
 
 #DENSE SECTION DEFS
 
 const TILE_SIZE: int = 32
 var loaded_chunks: Array[TileMapLayer] = []
-var chunk_height: int = 20 #in tiles
-var chunk_width: int = 10 # in tiles
+var chunk_height: int = 100 #in tiles
+var chunk_width: int = 34 # in tiles
 var chunk_size: int = chunk_height * TILE_SIZE
 
 #how many chunks are loaded
-var road_length: int = 7
-var course_length = 45
+var road_length: int = 3
+var course_length = 6
 var chunk_count = 0
 
 func _ready() -> void:
@@ -30,11 +30,15 @@ func _ready() -> void:
 func load_chunk() -> void:
 	# random gen of new tile goes here
 	var chunk 
-	
-	if randi() % 2 == 0:
+	#TODO: real end condition lol
+	chunk_count += 1
+	if (chunk_count > course_length):
+		chunk = END_ROAD_SCENE.instantiate()
+	elif randi() % 2 == 0:
 		chunk = STRAIGHT_ROAD_SCENE.instantiate()
 	else:
-		chunk = PEDESTRIAN_ROAD_SCENE.instantiate()
+		chunk = STRAIGHT_ROAD_SCENE.instantiate()
+		
 	#load first chunk one chunk_size behind the player
 	if loaded_chunks.is_empty():
 		chunk.global_position = Vector2( -ceil(road_length/2) * chunk_size, 0)
