@@ -28,8 +28,6 @@ player = NodePath("ShawamaTruckDriver")
 [node name="ShawamaTruckDriver" parent="." instance=ExtResource("2_7iqsd")]
 z_index = 4
 
-[node name="Obstacle Timer" type="Timer" parent="."]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_0y42b")
 player = NodePath("../ShawamaTruckDriver")

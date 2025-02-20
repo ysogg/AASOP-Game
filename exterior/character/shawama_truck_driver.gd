@@ -12,8 +12,11 @@ var timer : Timer # timer for how long each bounce will last
 # VARIABLES FOR IMPACT FRAME ADJUSTMENT
 @export var IMPACT_TIME_SCALE = 0.2 # how slow the hit frame will be
 @export var IMPACT_DURATION_TIME = 0.3 # how long the hit frame slow will last for
+var original_time_scale
 
 func _ready():
+	original_time_scale = Engine.time_scale
+	
 	timer = Timer.new()
 	timer.set_wait_time(0.3) # change this to adjust bounce time
 	timer.set_one_shot(true)
@@ -72,10 +75,9 @@ func on_collision(collided) -> void:
 	#$AnimatedSprite2D.play("spin")
 	
 	# impact frame
-	var curr_time_scale = Engine.time_scale
 	Engine.time_scale = IMPACT_TIME_SCALE 
 	await(get_tree().create_timer(IMPACT_TIME_SCALE * IMPACT_DURATION_TIME).timeout)
-	Engine.time_scale = curr_time_scale
+	Engine.time_scale = original_time_scale
 	
 	# ALSO PUT THE CODE HERE THAT WILL SLOSH THE TRUCK AROUND
 	

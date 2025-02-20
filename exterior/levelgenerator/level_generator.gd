@@ -6,10 +6,14 @@ class_name LevelGenerator
 # DEFAULT NO HAZARD ROAD DEFINTION
 const STRAIGHT_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/straight_road_chunk.tscn")
 const END_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/end_road_chunk.tscn")
+
 # HAZARD ROAD DEFS
-#const PEDESTRIAN_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/pedestrian_road_chunk.tscn")
+const NUMBER_OF_HAZARDS = 1
+const PEDESTRIAN_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/hazardChunks/pedestrian_road_chunk.tscn")
 
 #DENSE SECTION DEFS
+const NUMBER_OF_BUSY = 1
+const BUSY_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/busyChunk/busy_road_chunk.tscn")
 
 const TILE_SIZE: int = 32
 var loaded_chunks: Array[TileMapLayer] = []
@@ -19,23 +23,62 @@ var chunk_size: int = chunk_height * TILE_SIZE
 
 #how many chunks are loaded
 var road_length: int = 3
-var course_length = 6
+@export var course_length = 25 # level length in chunks
 var chunk_count = 0
 
+var hazard_timer: Timer
+var busy_timer: Timer
+var rng: RandomNumberGenerator
+
 func _ready() -> void:
+	rng = RandomNumberGenerator.new()
+	
+	hazard_timer = Timer.new()
+	hazard_timer.set_wait_time(rng.randf_range(17,24))
+	hazard_timer.set_one_shot(true)
+	add_child(hazard_timer)
+	
+	busy_timer = Timer.new()
+	busy_timer.set_wait_time(rng.randf_range(120,160))
+	busy_timer.set_one_shot(true)
+	add_child(busy_timer)
+	
 	#load initial 3 chunks
 	for i in range(road_length):
 		load_chunk()
+		
 
 func load_chunk() -> void:
 	# random gen of new tile goes here
 	var chunk 
-	#TODO: real end condition lol
+	# end condition
 	chunk_count += 1
-	if (chunk_count > course_length):
+	if (chunk_count == course_length):
 		chunk = END_ROAD_SCENE.instantiate()
-	elif randi() % 2 == 0:
-		chunk = STRAIGHT_ROAD_SCENE.instantiate()
+	elif (chunk_count > course_length):
+		return
+	# busy section condition
+	elif (busy_timer.is_stopped()):
+		var busy_selection = rng.randi_range(1, NUMBER_OF_BUSY)
+		if(busy_selection == 1):
+			chunk = BUSY_ROAD_SCENE.instantiate()
+			
+		#busy_timer.set_wait_time(rng.randf_range(120,160))
+		busy_timer.start()
+		
+	# hazard condition
+	elif hazard_timer.is_stopped():
+		# TODO: signal to the player that a hazard is coming
+		
+		# do another random select of one of the hazards
+		var hazard_selection = rng.randi_range(1, NUMBER_OF_HAZARDS)
+		if(hazard_selection == 1):
+			chunk = PEDESTRIAN_ROAD_SCENE.instantiate()
+		# TODO: Add additional hazard chunks here
+		
+		# restart the Hazard timer, could also randomize the timer length again here
+		# hazard_timer.set_wait_time(rng.randf_range(17,24))
+		hazard_timer.start()
 	else:
 		chunk = STRAIGHT_ROAD_SCENE.instantiate()
 		
