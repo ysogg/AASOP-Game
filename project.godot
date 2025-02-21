@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://global.gd"
+AudioManager="*res://audio/audio_manager.tscn"
+GameController="*res://gamecontroller/game_controller.tscn"
 
 [display]
 

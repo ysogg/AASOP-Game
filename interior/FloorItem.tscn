@@ -1,19 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://q6kmdsxemd1b"]
+[gd_scene load_steps=3 format=3 uid="uid://q6kmdsxemd1b"]
 
-[ext_resource type="Texture2D" uid="uid://dicn2vqyayvcl" path="res://interior/tempBox.png" id="1_yupg1"]
 [ext_resource type="Script" path="res://interior/interact_zone.gd" id="2_mi23o"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubpkd"]
-size = Vector2(463.803, 301.84)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpgd5"]
 
 [node name="FloorItem" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.798701, 1)
-texture = ExtResource("1_yupg1")
+scale = Vector2(2, 2)
 
 [node name="Item" type="Area2D" parent="Sprite2D"]
-scale = Vector2(0.510204, 0.510204)
 collision_layer = 4
 collision_mask = 0
 monitoring = false
@@ -21,6 +17,6 @@ script = ExtResource("2_mi23o")
 interact_label = "GroundItem"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Item"]
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_ubpkd")
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_lpgd5")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
