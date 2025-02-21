@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7g3fqod1xwd4"]
+
+[ext_resource type="Script" path="res://audio/audio_manager.gd" id="1_5l1vu"]
+[ext_resource type="AudioStream" uid="uid://dotkp64jr77lh" path="res://audio/mp3s/main_menu_fixed_mixing.mp3" id="2_vq6su"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_5l1vu")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MainMenu" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("2_vq6su")

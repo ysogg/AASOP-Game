@@ -1,7 +1,8 @@
 class_name Player extends CharacterBody2D
 
 @export var speed = 400
-@export var max_speed = 800
+@export var dash_speed: float = 1600
+@export var dash_duration: float = 0.2
 
 @onready var points = $points
 @onready var number_sprite = $points/NumberSprite
@@ -17,26 +18,51 @@ signal picked_up_item
 signal placed_item
 signal removed_placed_item
 
+var dashing: bool = false
+#cooldown
+var can_dash: bool = true
+var dash_cooldown: float = 0.5
+
+const DASH_PARTICLES = preload("res://interior/character/dash_particles.tscn")
+
 func get_input():
-		var dir = Input.get_vector("left", "right", "up", "down")
+	var dir = Input.get_vector("left", "right", "up", "down").normalized()
+	if !dashing:
 		velocity = dir * speed
-			
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("dash"):
+	if event.is_action_pressed("dash") and !dashing and can_dash:
 		_updateSpeed()
 	if event.is_action_pressed("interact"):
 		_interact()
 
-func _updateSpeed():
-	if (speed != 800):
-		speed += 400
-		dash_timer.start(0.5)
-		
 		#happens on spacebar, attempts to start mash minigame
 func _mash():
 	pass
+
+func _updateSpeed():
+	var dir = Input.get_vector("left", "right", "up", "down").normalized()
+	if dir == Vector2.ZERO:
+		return
+	dashing = true
+	can_dash = false
+	velocity = dir * dash_speed
 	
+	var particles: CPUParticles2D = DASH_PARTICLES.instantiate()
+	particles.position = position + Vector2(0, 70)
+	particles.direction = -dir
+	particles.emitting = true
+	add_sibling(particles)
+	
+	await get_tree().create_timer(dash_duration).timeout
+	dashing = false
+	velocity = Vector2.ZERO
+	
+	await get_tree().create_timer(dash_cooldown).timeout
+	can_dash = true
+	await particles.finished
+	particles.queue_free()
+
 func _interact():
 	var in_provider = false
 	var in_receiver = false
@@ -107,9 +133,7 @@ func _physics_process(delta):
 
 
 func _on_interaction_area_area_entered(area):
-	if area.interact_label == "PlacedItem":
-		pass
-	elif all_interactions && area.interact_label != "GroundItem":
+	if all_interactions && area.interact_label != "GroundItem":
 		if all_interactions[0].get_parent().material:
 			all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
 	all_interactions.insert(0, area)

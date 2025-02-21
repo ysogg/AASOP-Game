@@ -1,0 +1,63 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://c5k0stkptikm2"]
+
+[ext_resource type="StyleBox" uid="uid://cths6rkl22fu" path="res://ui/themes/hover_button.tres" id="1_1nsh1"]
+[ext_resource type="StyleBox" uid="uid://b0523x478kipt" path="res://ui/themes/normal_button.tres" id="1_ggi2g"]
+[ext_resource type="StyleBox" uid="uid://bo5d4n7bryhx4" path="res://ui/themes/pressed_button.tres" id="2_co4lb"]
+[ext_resource type="FontFile" uid="uid://r8hr46n3byru" path="res://ui/themes/Jersey10-Regular.ttf" id="4_ncyvg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6v64e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiku2"]
+content_margin_left = 100.0
+content_margin_top = 60.0
+content_margin_right = 100.0
+content_margin_bottom = 60.0
+bg_color = Color(0.289741, 0.4107, 0.458813, 0.137255)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.196078, 0.196078, 0.196078, 0.282353)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8k0wd"]
+content_margin_left = 45.0
+content_margin_top = 10.0
+content_margin_right = 45.0
+content_margin_bottom = 10.0
+bg_color = Color(0.841584, 0.577188, 0.477092, 1)
+border_width_bottom = 10
+border_color = Color(0.743542, 0.463794, 0.357651, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4vuq"]
+content_margin_left = 150.0
+content_margin_top = 35.0
+content_margin_right = 150.0
+content_margin_bottom = 35.0
+bg_color = Color(0.678463, 0.410846, 0.310096, 1)
+border_width_bottom = 10
+border_color = Color(0.509978, 0.294861, 0.2123, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxEmpty_6v64e")
+Button/styles/hover = ExtResource("1_1nsh1")
+Button/styles/normal = ExtResource("1_ggi2g")
+Button/styles/pressed = ExtResource("2_co4lb")
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("4_ncyvg")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_oiku2")
+playgamebutton/base_type = &"Button"
+playgamebutton/styles/hover = SubResource("StyleBoxFlat_8k0wd")
+playgamebutton/styles/normal = SubResource("StyleBoxFlat_w4vuq")
+playgamebutton/styles/pressed = SubResource("StyleBoxFlat_w4vuq")
