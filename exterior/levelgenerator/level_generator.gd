@@ -8,8 +8,11 @@ const STRAIGHT_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/
 const END_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/end_road_chunk.tscn")
 
 # HAZARD ROAD DEFS
-const NUMBER_OF_HAZARDS = 1
+const NUMBER_OF_HAZARDS = 3
 const PEDESTRIAN_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/hazardChunks/pedestrian_road_chunk.tscn")
+const TRAFFIC_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/hazardChunks/traffic_road_chunk.tscn")
+const CAR_CRASH_ROAD_SCENE: PackedScene = preload("res://exterior/levelgenerator/roadChunks/hazardChunks/car_crash_road_chunk.tscn")
+
 
 #DENSE SECTION DEFS
 const NUMBER_OF_BUSY = 1
@@ -23,8 +26,8 @@ var chunk_size: int = chunk_height * TILE_SIZE
 
 #how many chunks are loaded
 var road_length: int = 3
-@export var course_length = 25 # level length in chunks
-var chunk_count = 0
+@export var course_length = 40 # level length in chunks
+var chunk_count = 3
 
 var hazard_timer: Timer
 var busy_timer: Timer
@@ -37,11 +40,13 @@ func _ready() -> void:
 	hazard_timer.set_wait_time(rng.randf_range(17,24))
 	hazard_timer.set_one_shot(true)
 	add_child(hazard_timer)
+	hazard_timer.start()
 	
 	busy_timer = Timer.new()
 	busy_timer.set_wait_time(rng.randf_range(120,160))
 	busy_timer.set_one_shot(true)
 	add_child(busy_timer)
+	busy_timer.start()
 	
 	#load initial 3 chunks
 	for i in range(road_length):
@@ -74,7 +79,10 @@ func load_chunk() -> void:
 		var hazard_selection = rng.randi_range(1, NUMBER_OF_HAZARDS)
 		if(hazard_selection == 1):
 			chunk = PEDESTRIAN_ROAD_SCENE.instantiate()
-		# TODO: Add additional hazard chunks here
+		elif(hazard_selection == 2):
+			chunk = CAR_CRASH_ROAD_SCENE.instantiate()
+		elif(hazard_selection == 3):
+			chunk = TRAFFIC_ROAD_SCENE.instantiate()
 		
 		# restart the Hazard timer, could also randomize the timer length again here
 		# hazard_timer.set_wait_time(rng.randf_range(17,24))

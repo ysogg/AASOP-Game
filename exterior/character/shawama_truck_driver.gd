@@ -40,9 +40,9 @@ func _physics_process(delta: float) -> void:
 func get_input() -> void:
 	var turn = 0
 	if Input.is_action_pressed("right"):
-		turn = -1
-	if Input.is_action_pressed("left"):
 		turn = 1
+	if Input.is_action_pressed("left"):
+		turn = -1
 	if turn == 0:
 		steer_direction = -1 * (Vector2(100, 0) + velocity).angle()
 	else:

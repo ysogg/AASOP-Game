@@ -10,7 +10,10 @@ radius = 20.0
 height = 90.0
 
 [node name="ShawamaTruckDriver" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_6b6ts")
+SPEED = 800
+TURN_ANGLE = 7
 IMPACT_TIME_SCALE = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
