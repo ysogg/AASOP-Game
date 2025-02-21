@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=9 format=3 uid="uid://c5k0stkptikm2"]
 
-[ext_resource type="StyleBox" uid="uid://cths6rkl22fu" path="res://ui/hover_button.tres" id="1_1nsh1"]
-[ext_resource type="StyleBox" uid="uid://b0523x478kipt" path="res://ui/normal_button.tres" id="1_ggi2g"]
-[ext_resource type="StyleBox" uid="uid://bo5d4n7bryhx4" path="res://ui/pressed_button.tres" id="2_co4lb"]
-[ext_resource type="FontFile" uid="uid://r8hr46n3byru" path="res://ui/Jersey10-Regular.ttf" id="4_ncyvg"]
+[ext_resource type="StyleBox" uid="uid://cths6rkl22fu" path="res://ui/themes/hover_button.tres" id="1_1nsh1"]
+[ext_resource type="StyleBox" uid="uid://b0523x478kipt" path="res://ui/themes/normal_button.tres" id="1_ggi2g"]
+[ext_resource type="StyleBox" uid="uid://bo5d4n7bryhx4" path="res://ui/themes/pressed_button.tres" id="2_co4lb"]
+[ext_resource type="FontFile" uid="uid://r8hr46n3byru" path="res://ui/themes/Jersey10-Regular.ttf" id="4_ncyvg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6v64e"]
 

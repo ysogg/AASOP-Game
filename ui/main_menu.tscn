@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3eyl8fkd2i2l"]
+[gd_scene load_steps=5 format=3 uid="uid://d3eyl8fkd2i2l"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_hp2vh"]
-[ext_resource type="Theme" uid="uid://c5k0stkptikm2" path="res://ui/ui_theme.tres" id="1_iedfo"]
+[ext_resource type="Theme" uid="uid://c5k0stkptikm2" path="res://ui/themes/ui_theme.tres" id="1_iedfo"]
+[ext_resource type="Script" path="res://ui/animation_component.gd" id="3_h7ywy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4nq8"]
 content_margin_bottom = 20.0
@@ -62,6 +63,18 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 text = "Play Game"
 
+[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/PlayGame"]
+script = ExtResource("3_h7ywy")
+enter_animation = true
+hover_transition = 5
+hover_easing = 1
+hover_scale = Vector2(1.1, 1.1)
+enter_time = 0.3
+enter_transition = 11
+enter_easing = 2
+enter_position = Vector2(-500, 0)
+enter_scale = Vector2(0, 0)
+
 [node name="Settings" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -82,6 +95,19 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Settings
 "
+
+[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Settings" node_paths=PackedStringArray("wait_for")]
+script = ExtResource("3_h7ywy")
+enter_animation = true
+hover_transition = 5
+hover_easing = 1
+hover_scale = Vector2(1.1, 1.1)
+wait_for = NodePath("../../PlayGame/AnimationComponent")
+enter_time = 0.2
+enter_transition = 11
+enter_easing = 2
+enter_position = Vector2(-500, 0)
+enter_scale = Vector2(0, 0)
 
 [node name="Credits" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -104,6 +130,19 @@ theme_override_font_sizes/font_size = 28
 text = "Credits
 "
 
+[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits" node_paths=PackedStringArray("wait_for")]
+script = ExtResource("3_h7ywy")
+enter_animation = true
+hover_transition = 5
+hover_easing = 1
+hover_scale = Vector2(1.1, 1.1)
+wait_for = NodePath("../../Settings/AnimationComponent")
+enter_time = 0.2
+enter_transition = 11
+enter_easing = 2
+enter_position = Vector2(-500, 0)
+enter_scale = Vector2(0, 0)
+
 [node name="Quit" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -123,6 +162,19 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Quit"
+
+[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Quit" node_paths=PackedStringArray("wait_for")]
+script = ExtResource("3_h7ywy")
+enter_animation = true
+hover_transition = 5
+hover_easing = 1
+hover_scale = Vector2(1.1, 1.1)
+wait_for = NodePath("../../Credits/AnimationComponent")
+enter_time = 0.2
+enter_transition = 11
+enter_easing = 2
+enter_position = Vector2(-500, 0)
+enter_scale = Vector2(0, 0)
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
