@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4fffdjg3nfg2"]
+
+[ext_resource type="Script" path="res://interior/interact_zone.gd" id="1_dvga2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mt04"]
+size = Vector2(139.16, 77.4201)
+
+[node name="PlacedItem" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Item" type="Area2D" parent="Sprite2D"]
+scale = Vector2(0.510204, 0.510204)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_dvga2")
+interact_label = "PlacedItem"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Item"]
+position = Vector2(0, 17.15)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_8mt04")
+debug_color = Color(0, 0.646164, 0.243608, 0.42)

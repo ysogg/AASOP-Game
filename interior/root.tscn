@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8iersnlh0kwc"]
+[gd_scene load_steps=11 format=3 uid="uid://b8iersnlh0kwc"]
 
 [ext_resource type="PackedScene" uid="uid://blaf1ix5576p3" path="res://interior/Background.tscn" id="1_7qruk"]
 [ext_resource type="PackedScene" uid="uid://cyv0kifia645j" path="res://interior/CharacterScreen.tscn" id="2_jwi68"]
+[ext_resource type="Script" path="res://interior/placedItem.gd" id="6_m7kno"]
 [ext_resource type="Script" path="res://interior/points.gd" id="12_7ucsl"]
 [ext_resource type="Texture2D" uid="uid://qug60t575vpa" path="res://interior/character/ffe5462d56a4dbdee87e91d98446e711.png" id="12_m78n2"]
 [ext_resource type="Script" path="res://interior/groundItem.gd" id="20_pwi6b"]
@@ -128,5 +129,8 @@ position = Vector2(576, 324)
 [node name="FloorItem" type="Node2D" parent="."]
 position = Vector2(-3, 2)
 script = ExtResource("20_pwi6b")
+
+[node name="PlacedItem" type="Node2D" parent="."]
+script = ExtResource("6_m7kno")
 
 [connection signal="dropped_item" from="CharacterBody2D" to="FloorItem" method="_on_character_body_2d_dropped_item"]

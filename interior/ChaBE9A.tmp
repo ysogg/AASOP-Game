@@ -103,6 +103,8 @@ animations = [{
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_lgaw7")
+speed = null
+max_speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 1.5)

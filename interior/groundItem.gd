@@ -13,6 +13,7 @@ func _on_dropped_item(type, pos) -> void:
 	
 	var item_scene = load("res://interior/FloorItem.tscn")
 	var instance = item_scene.instantiate()
+	instance.get_node("Sprite2D").texture = load("res://interior/assets/" + type + ".png")
 	instance.position = pos
 	add_child(instance)
 
