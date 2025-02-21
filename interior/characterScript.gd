@@ -135,17 +135,21 @@ func _physics_process(delta):
 func _on_interaction_area_area_entered(area):
 	if all_interactions && area.interact_label != "GroundItem":
 		if all_interactions[0].get_parent().material:
-			all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
+			if velocity.x == 0 && velocity.y == 0:
+				pass
+			else:
+				all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
 	all_interactions.insert(0, area)
 	update_interactions()
 
 func _on_interaction_area_area_exited(area: Area2D):
 	if area.interact_label != "GroundItem":
-		for test in all_interactions:
-			if test.get_parent().material:
-			#if all_interactions[0].get_parent().material:
-				#all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
-				test.get_parent().material.set_shader_parameter("width", 0)
+		for zone in all_interactions:
+			if zone.get_parent().material:
+				if velocity.x == 0 && velocity.y == 0:
+					pass
+				else:
+					zone.get_parent().material.set_shader_parameter("width", 0)
 	all_interactions.erase(area)
 	update_interactions()
 	
