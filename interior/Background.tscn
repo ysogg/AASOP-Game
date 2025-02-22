@@ -793,7 +793,6 @@ offset_bottom = 18.0
 text = "Wraps"
 metadata/_edit_use_anchors_ = true
 
-
 [node name="ItemReceiver Fries" type="Sprite2D" parent="Receivers Folder"]
 material = SubResource("ShaderMaterial_dps3f")
 position = Vector2(1318, 1032)
@@ -1148,7 +1147,6 @@ texture = ExtResource("11_om60p")
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Door/Collider"]
 position = Vector2(-3.99999, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hb5dd")
 
 [node name="Interact" type="Area2D" parent="Door"]
@@ -1159,6 +1157,5 @@ script = ExtResource("1_a8rqw")
 interact_label = "Door"
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Door/Interact"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bouhw")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)

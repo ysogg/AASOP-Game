@@ -108,7 +108,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_jwi68")]
-position = Vector2(317, 390)
+position = Vector2(317, 726)
 
 [node name="points" type="Node2D" parent="CharacterBody2D"]
 script = ExtResource("12_7ucsl")
@@ -123,10 +123,8 @@ libraries = {
 "": SubResource("AnimationLibrary_qfn7s")
 }
 
-
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(613, 325)
-
+position = Vector2(960, 540)
 
 [node name="FloorItem" type="Node2D" parent="."]
 script = ExtResource("20_pwi6b")
@@ -134,7 +132,7 @@ script = ExtResource("20_pwi6b")
 [node name="PlacedItem" type="Node2D" parent="."]
 script = ExtResource("6_m7kno")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
 [connection signal="dropped_item" from="CharacterBody2D" to="FloorItem" method="_on_character_body_2d_dropped_item"]
