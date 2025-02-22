@@ -19,6 +19,7 @@ signal dropped_item
 signal picked_up_item
 signal placed_item
 signal removed_placed_item
+signal escape_menu
 
 var task_duration = 5.0
 var elapsed_time = 0.0

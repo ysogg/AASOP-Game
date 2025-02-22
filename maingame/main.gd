@@ -14,6 +14,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("transition_fuck"):
 		transition_scene(is_inside)
 		is_inside = !is_inside
+	if event.is_action_pressed("escape"):
+		print("pressed escape")
+		#get_tree().paused = true
+		#show()
+		Global.game_controller.change_gui_scene("res://ui/popup_menu.tscn")
 
 func transition_scene(inside: bool) -> void:
 	if inside:
