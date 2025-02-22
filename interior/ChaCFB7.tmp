@@ -1,0 +1,153 @@
+[gd_scene load_steps=20 format=3 uid="uid://cyv0kifia645j"]
+
+[ext_resource type="Script" path="res://interior/characterScript.gd" id="1_lgaw7"]
+[ext_resource type="Texture2D" uid="uid://dgj0ypedohwre" path="res://interior/ezgif-split/guy000.png" id="2_74y7c"]
+[ext_resource type="Texture2D" uid="uid://b43bnmvfn6oul" path="res://interior/ezgif-split/guy001.png" id="3_r5b2f"]
+[ext_resource type="Texture2D" uid="uid://2tbym1m3e8hc" path="res://interior/ezgif-split/guy002.png" id="4_8ogkf"]
+[ext_resource type="Texture2D" uid="uid://bl7e0yd4tmq3u" path="res://interior/ezgif-split/guy003.png" id="5_ftbyj"]
+[ext_resource type="Texture2D" uid="uid://bc363kp311nn8" path="res://interior/ezgif-split/guy004.png" id="6_lmg87"]
+[ext_resource type="Texture2D" uid="uid://bdfwp12hvdta0" path="res://interior/ezgif-split/guy005.png" id="7_thra6"]
+[ext_resource type="Texture2D" uid="uid://sp02rexddyww" path="res://interior/ezgif-split/guy006.png" id="8_6dv0t"]
+[ext_resource type="Texture2D" uid="uid://cjvs86xbknv74" path="res://interior/ezgif-split/guy007.png" id="9_8n6lf"]
+[ext_resource type="Texture2D" uid="uid://c6nsfmopr50we" path="res://interior/character/pic.png" id="10_gexo0"]
+[ext_resource type="Texture2D" uid="uid://cnltd54d3f2ih" path="res://interior/character/guy009.png" id="11_x6w7f"]
+[ext_resource type="Texture2D" uid="uid://ccvvvmxj0237h" path="res://interior/character/guy010.png" id="12_5aipj"]
+[ext_resource type="Texture2D" uid="uid://dl7eq1epyw1md" path="res://interior/character/guy011.png" id="13_kic0d"]
+[ext_resource type="Texture2D" uid="uid://curdbl707ptmu" path="res://interior/character/guy012.png" id="14_djjb7"]
+[ext_resource type="Texture2D" uid="uid://deo3gsnt6x4bn" path="res://interior/character/guy013.png" id="15_hf4um"]
+[ext_resource type="Texture2D" uid="uid://c7ixaljd67k8i" path="res://interior/character/guy014.png" id="16_roud4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vuwhr"]
+radius = 8.16667
+height = 32.3333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6x0b"]
+radius = 60.0083
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_at3r0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_74y7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r5b2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8ogkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ftbyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lmg87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_thra6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6dv0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8n6lf")
+}],
+"loop": false,
+"name": &"run",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_gexo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gexo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gexo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x6w7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5aipj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kic0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_djjb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_hf4um")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_roud4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gexo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gexo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gexo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gexo0")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 7.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+z_index = 1
+collision_layer = 2
+script = ExtResource("1_lgaw7")
+speed = null
+dash_speed = null
+dash_duration = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1.5, 1.5)
+scale = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_vuwhr")
+
+[node name="InteractionComponents" type="Node2D" parent="."]
+z_index = 1
+
+[node name="InteractionArea" type="Area2D" parent="InteractionComponents"]
+visible = false
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponents/InteractionArea"]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_r6x0b")
+debug_color = Color(0.995634, 0, 0.201745, 0.42)
+
+[node name="InteractLabel" type="Label" parent="InteractionComponents"]
+offset_left = -17.0
+offset_top = -131.0
+offset_right = 13.0
+offset_bottom = -108.0
+text = "test
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_at3r0")
+animation = &"stand"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[connection signal="area_entered" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_exited"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
