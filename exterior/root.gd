@@ -22,5 +22,6 @@ func _on_transition_to_inside() -> void:
 	camera_2d.zoom = Vector2(zoom_out, zoom_out)
 
 func _on_transition_to_outside() -> void:
+	camera_2d.make_current()
 	is_inside = false
 	camera_2d.zoom = Vector2(zoom_in, zoom_in)

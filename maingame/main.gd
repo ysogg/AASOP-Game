@@ -17,12 +17,13 @@ func _input(event: InputEvent) -> void:
 
 func transition_scene(inside: bool) -> void:
 	if inside:
-		inside_scene.reparent(sub_viewport)
+		inside_scene.visible = false
 		outside_scene.reparent(self)
-		move_child(outside_scene, 0)
+		move_child(outside_scene, 1)
 		transition_to_outside.emit()
 	else:
 		outside_scene.reparent(sub_viewport)
 		inside_scene.reparent(self)
+		inside_scene.visible = true
 		move_child(inside_scene, 0)
 		transition_to_inside.emit()

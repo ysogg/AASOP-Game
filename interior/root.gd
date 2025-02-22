@@ -15,3 +15,4 @@ func _on_transition_to_outside() -> void:
 
 func _on_transition_to_inside() -> void:
 	print("t -> i")
+	camera_2d.make_current()
