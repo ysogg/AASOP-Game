@@ -7,6 +7,8 @@ func _ready() -> void:
 
 func _on_play_game_pressed() -> void:
 	play_game_pressed.emit()
+	Global.game_controller.change_2d_scene("res://maingame/main.tscn")
+	Global.game_controller.change_gui_scene("res://ui/gameplay_ui.tscn")
 	print("Play game pressed")
 
 

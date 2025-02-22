@@ -1,14 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf3bpl6yv5ha1"]
+[gd_scene load_steps=2 format=3 uid="uid://bf3bpl6yv5ha1"]
 
 [ext_resource type="Script" path="res://exterior/levelgenerator/level_generator.gd" id="1_7h62x"]
-[ext_resource type="PackedScene" uid="uid://28c5e34cmf0d" path="res://exterior/character/shawama_truck_driver.tscn" id="2_7iqsd"]
 
 [node name="LevelGenerator" type="Node2D" node_paths=PackedStringArray("player")]
 z_index = -1
 script = ExtResource("1_7h62x")
-player = NodePath("ShawamaTruckDriver")
-
-[node name="ShawamaTruckDriver" parent="." instance=ExtResource("2_7iqsd")]
-z_index = 4
-
-[node name="Camera2D" type="Camera2D" parent="ShawamaTruckDriver"]
+player = NodePath("")

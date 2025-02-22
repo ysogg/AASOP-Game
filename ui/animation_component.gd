@@ -35,7 +35,7 @@ signal entered
 @export var enter_size: Vector2
 @export var enter_modulate: Color = Color.WHITE
 
-var parent: Button 
+var parent 
 var default_scale: Vector2
 var hover_values: Dictionary
 var default_values: Dictionary
@@ -47,7 +47,6 @@ func _ready() -> void:
 	parent = get_parent()
 	#research more about this function
 	call_deferred("init")
-
 
 func init() -> void:
 	if from_centre:
