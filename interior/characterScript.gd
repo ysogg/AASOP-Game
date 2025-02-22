@@ -27,6 +27,25 @@ const DASH_PARTICLES = preload("res://interior/character/dash_particles.tscn")
 
 func get_input():
 	var dir = Input.get_vector("left", "right", "up", "down").normalized()
+	#get_node("RayCast2D").set_rotation(Vector2(rad_to_deg(atan2(-dir.x, -dir.z))))
+	var ray : Dictionary = {
+							Vector2(-1,0):90, 
+							Vector2(1,0):270, 
+							Vector2(0,-1):180, 
+							Vector2(0,1):0, 
+							Vector2(-0.71,0.71):45, 
+							Vector2(-0.71,-0.71):135, 
+							Vector2(0.71,-0.71):225, 
+							Vector2(0.71,0.71):315
+						}
+	#0.707107
+	print(dir)
+	var rounded_dir = (round(dir*pow(10,2))/pow(10,2))
+	if rounded_dir != Vector2(0,0):
+		get_node("RayCast2D").set_rotation(deg_to_rad(ray[rounded_dir]))
+
+	#get_node("StairCheck").set_rotation_degrees(Vector3(0, rad2deg(atan2(-direction.x, -direction.z)), 0))
+
 	if !dashing:
 		velocity = dir * speed
 
@@ -130,7 +149,6 @@ func _physics_process(delta):
 		animated_sprite.play("stand")
 	
 	move_and_slide()
-
 
 func _on_interaction_area_area_entered(area):
 	if all_interactions && area.interact_label != "GroundItem":
