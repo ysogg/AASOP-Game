@@ -191,35 +191,39 @@ func update_loading_bar():
 	loading_bar.region_rect = Rect2(0, 0, reveal, loading_bar.texture.get_height())
 	
 func _on_interaction_area_area_entered(area):
-	if all_interactions && area.interact_label != "GroundItem":
-		if all_interactions[0].get_parent().material:
-			if velocity.x == 0 && velocity.y == 0:
-				pass
-			else:
-				all_interactions[0].get_parent().material.set_shader_parameter("width", 0)
-	all_interactions.insert(0, area)
-	update_interactions()
+	if area.interact_label != "PlacedItem":
+		for zone in all_interactions:
+			zone.focused = false
+			if zone.get_parent().material:
+				zone.get_parent().material.set_shader_parameter("width", 0)
+				
+		area.focused = true;
+	all_interactions.insert(0,area)
+	focus_zones()
 
 func _on_interaction_area_area_exited(area: Area2D):
-	if area.interact_label != "GroundItem":
+	if area.interact_label != "PlacedItem":
 		for zone in all_interactions:
-			if zone.get_parent().material:
-				if velocity.x == 0 && velocity.y == 0:
-					pass
-				else:
-					zone.get_parent().material.set_shader_parameter("width", 0)
-	all_interactions.erase(area)
-	update_interactions()
-	
-func update_interactions():
-	if all_interactions:
-		interactLabel.text = all_interactions[0].interact_label
-		if interactLabel.text != "GroundItem":
-			if all_interactions[0].get_parent().material:
-				all_interactions[0].get_parent().material.set_shader_parameter("width", 2)
+			zone.focused = false
+		focus_zones()
+		all_interactions.erase(area)
+		
+		for zone in all_interactions:
+			zone.focused = true
+		focus_zones()
 	else:
-		interactLabel.text = ""
+		all_interactions.erase(area)
 
+func focus_zones():
+	for zone in all_interactions:
+		if zone.focused:
+			if zone.get_parent().material:
+				zone.get_parent().material.set_shader_parameter("width", 2)
+				interactLabel.text = zone.interact_label
+		else:
+			if zone.get_parent().material:
+				zone.get_parent().material.set_shader_parameter("width", 0)
+			
 
 func task_completed():
 	is_task_active = false

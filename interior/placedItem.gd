@@ -29,10 +29,10 @@ func _on_removed_placed_item(areas) -> void:
 	
 	for area in areas:
 		if area.interact_label == "PlacedItem":
+			type = area.item_type
 			area.get_parent().queue_free()
 		else:
 			table = area
-			type = table.item_type
 
 	table.container_status = "empty"
 	

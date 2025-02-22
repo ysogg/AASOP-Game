@@ -123,6 +123,11 @@ libraries = {
 "": SubResource("AnimationLibrary_qfn7s")
 }
 
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(613, 325)
+
+
 [node name="FloorItem" type="Node2D" parent="."]
 script = ExtResource("20_pwi6b")
 
