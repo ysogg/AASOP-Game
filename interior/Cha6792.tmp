@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cyv0kifia645j"]
+[gd_scene load_steps=20 format=3 uid="uid://cyv0kifia645j"]
 
 [ext_resource type="Script" path="res://interior/characterScript.gd" id="1_lgaw7"]
 [ext_resource type="Texture2D" uid="uid://dgj0ypedohwre" path="res://interior/ezgif-split/guy000.png" id="2_74y7c"]
@@ -16,11 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://curdbl707ptmu" path="res://interior/character/guy012.png" id="14_djjb7"]
 [ext_resource type="Texture2D" uid="uid://deo3gsnt6x4bn" path="res://interior/character/guy013.png" id="15_hf4um"]
 [ext_resource type="Texture2D" uid="uid://c7ixaljd67k8i" path="res://interior/character/guy014.png" id="16_roud4"]
-[ext_resource type="Texture2D" uid="uid://so4p21po2yqp" path="res://interior/loading.png" id="17_vhpdm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pkgl1"]
-radius = 4.0
-height = 76.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vuwhr"]
+radius = 8.16667
+height = 32.3333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6x0b"]
+radius = 60.0083
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_at3r0"]
 animations = [{
@@ -98,18 +100,33 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vuwhr"]
-radius = 8.16667
-height = 24.0
-
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
-scale = Vector2(2, 2)
 collision_layer = 2
 script = ExtResource("1_lgaw7")
+speed = null
+dash_speed = null
+dash_duration = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1.5, 1.5)
+scale = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_vuwhr")
 
 [node name="InteractionComponents" type="Node2D" parent="."]
 z_index = 1
+
+[node name="InteractionArea" type="Area2D" parent="InteractionComponents"]
+visible = false
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponents/InteractionArea"]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_r6x0b")
+debug_color = Color(0.995634, 0, 0.201745, 0.42)
 
 [node name="InteractLabel" type="Label" parent="InteractionComponents"]
 offset_left = -17.0
@@ -121,21 +138,6 @@ text = "test
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RayCast2D" type="RayCast2D" parent="InteractionComponents"]
-target_position = Vector2(0, 75)
-collision_mask = 4
-collide_with_areas = true
-
-[node name="InteractionArea" type="Area2D" parent="InteractionComponents/RayCast2D"]
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponents/RayCast2D/InteractionArea"]
-position = Vector2(0, 37)
-shape = SubResource("CapsuleShape2D_pkgl1")
-debug_color = Color(0.995634, 0, 0.201745, 0.42)
-
 [node name="DashTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -144,11 +146,8 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_at3r0")
 animation = &"stand"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 14)
-scale = Vector2(3, 3)
-shape = SubResource("CapsuleShape2D_vuwhr")
+[node name="RayCast2D" type="RayCast2D" parent="."]
 
-[connection signal="area_entered" from="InteractionComponents/RayCast2D/InteractionArea" to="." method="_on_interaction_area_area_entered"]
-[connection signal="area_exited" from="InteractionComponents/RayCast2D/InteractionArea" to="." method="_on_interaction_area_area_exited"]
+[connection signal="area_entered" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_exited"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
