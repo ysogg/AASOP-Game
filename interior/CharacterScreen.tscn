@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyv0kifia645j"]
+[gd_scene load_steps=21 format=3 uid="uid://cyv0kifia645j"]
 
 [ext_resource type="Script" path="res://interior/characterScript.gd" id="1_lgaw7"]
 [ext_resource type="Texture2D" uid="uid://dgj0ypedohwre" path="res://interior/ezgif-split/guy000.png" id="2_74y7c"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://curdbl707ptmu" path="res://interior/character/guy012.png" id="14_djjb7"]
 [ext_resource type="Texture2D" uid="uid://deo3gsnt6x4bn" path="res://interior/character/guy013.png" id="15_hf4um"]
 [ext_resource type="Texture2D" uid="uid://c7ixaljd67k8i" path="res://interior/character/guy014.png" id="16_roud4"]
+[ext_resource type="Texture2D" uid="uid://so4p21po2yqp" path="res://interior/loading.png" id="17_vhpdm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pkgl1"]
 radius = 4.0
@@ -103,6 +104,7 @@ height = 24.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
+scale = Vector2(2, 2)
 collision_layer = 2
 script = ExtResource("1_lgaw7")
 
