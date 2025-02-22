@@ -9,11 +9,19 @@ signal transition_to_outside
 
 var is_inside: bool = true
 
+func _init() -> void:
+	AudioManager.play_gameplay()
+
+func _ready() -> void:
+	if get_tree().get_first_node_in_group("Player"):
+		var player = get_tree().get_first_node_in_group("Player")
+		player.door_pressed.connect(_on_door_pressed)
+
 func _input(event: InputEvent) -> void:
-	#this is the temporary scene swapping. change to actual logic when interactions are fixed
-	if event.is_action_pressed("transition_fuck"):
-		transition_scene(is_inside)
-		is_inside = !is_inside
+	#use for debug
+	#if event.is_action_pressed("transition_fuck"):
+		#transition_scene(is_inside)
+		#is_inside = !is_inside
 	if event.is_action_pressed("escape") && Global.pause_menu_enabled:
 		Global.pause_menu_enabled = false
 		Global.game_controller.change_gui_scene("res://ui/gameplay_ui.tscn")
@@ -23,13 +31,19 @@ func _input(event: InputEvent) -> void:
 		Global.pause_menu_enabled = true
 		Global.game_controller.change_gui_scene("res://ui/popup_menu.tscn")
 
+func _on_door_pressed() -> void:
+	transition_scene(is_inside)
+	is_inside = !is_inside
+
 func transition_scene(inside: bool) -> void:
 	if inside:
+		Global.movement_lock = true
 		inside_scene.visible = false
 		outside_scene.reparent(self)
 		move_child(outside_scene, 1)
 		transition_to_outside.emit()
 	else:
+		Global.movement_lock = false
 		outside_scene.reparent(sub_viewport)
 		inside_scene.reparent(self)
 		inside_scene.visible = true

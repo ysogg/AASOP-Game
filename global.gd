@@ -8,6 +8,8 @@ var pause_menu_enabled = false
 
 var current_scene = null
 
+var movement_lock : bool = false
+
 var current_score: int
 
 var held_object: String
