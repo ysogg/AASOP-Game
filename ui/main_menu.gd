@@ -3,7 +3,9 @@ extends Control
 signal play_game_pressed
 
 func _ready() -> void:
-	AudioManager.play_main_menu()
+	if Global.main_menu_first_load:
+		AudioManager.play_main_menu()
+		Global.main_menu_first_load = false
 
 func _on_play_game_pressed() -> void:
 	play_game_pressed.emit()
@@ -13,6 +15,8 @@ func _on_play_game_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
+	print(Global.game_controller)
+	Global.game_controller.change_gui_scene("res://ui/settings_menu.tscn")
 	print("Display settings")
 
 

@@ -1,5 +1,11 @@
 extends Node
 
+var main_menu_first_load = true
+
+var is_fullscreen = false
+
+var pause_menu_enabled = false
+
 var current_scene = null
 
 var current_score: int
