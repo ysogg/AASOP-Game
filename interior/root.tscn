@@ -124,7 +124,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(613, 325)
 
 [node name="FloorItem" type="Node2D" parent="."]
 position = Vector2(-3, 2)
