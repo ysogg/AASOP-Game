@@ -32,15 +32,6 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("1_iedfo")
 
-[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer"]
-script = ExtResource("3_h7ywy")
-enter_animation = true
-enter_time = 1.0
-enter_transition = 9
-enter_easing = 1
-enter_position = Vector2(0, -500)
-enter_scale = Vector2(0, 0)
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
@@ -79,7 +70,7 @@ enter_animation = true
 hover_transition = 5
 hover_easing = 1
 hover_scale = Vector2(1.1, 1.1)
-wait_for = NodePath("../../../AnimationComponent")
+wait_for = NodePath("")
 enter_time = 0.3
 enter_transition = 11
 enter_easing = 2
@@ -120,40 +111,6 @@ enter_easing = 2
 enter_position = Vector2(-500, 0)
 enter_scale = Vector2(0, 0)
 
-[node name="Credits" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits/CenterContainer"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits/CenterContainer/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "Credits
-"
-
-[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits" node_paths=PackedStringArray("wait_for")]
-script = ExtResource("3_h7ywy")
-enter_animation = true
-hover_transition = 5
-hover_easing = 1
-hover_scale = Vector2(1.1, 1.1)
-wait_for = NodePath("../../Settings/AnimationComponent")
-enter_time = 0.2
-enter_transition = 11
-enter_easing = 2
-enter_position = Vector2(-500, 0)
-enter_scale = Vector2(0, 0)
-
 [node name="Quit" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -180,7 +137,7 @@ enter_animation = true
 hover_transition = 5
 hover_easing = 1
 hover_scale = Vector2(1.1, 1.1)
-wait_for = NodePath("../../Credits/AnimationComponent")
+wait_for = NodePath("../../Settings/AnimationComponent")
 enter_time = 0.2
 enter_transition = 11
 enter_easing = 2
@@ -189,5 +146,4 @@ enter_scale = Vector2(0, 0)
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

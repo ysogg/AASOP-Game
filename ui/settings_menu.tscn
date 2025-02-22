@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://cye500eosrbpj"]
+
+[ext_resource type="Script" path="res://ui/settings_menu.gd" id="1_uo7xb"]
+[ext_resource type="Theme" uid="uid://c5k0stkptikm2" path="res://ui/themes/ui_theme.tres" id="2_j0u3r"]
+[ext_resource type="Script" path="res://ui/animation_component.gd" id="3_objlb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4nq8"]
+content_margin_bottom = 20.0
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_uo7xb")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_j0u3r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i4nq8")
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="Fullscreen" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Fullscreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Fullscreen/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Fullscreen/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Fullscreen"
+
+[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Fullscreen" node_paths=PackedStringArray("wait_for")]
+script = ExtResource("3_objlb")
+enter_animation = true
+hover_transition = 5
+hover_easing = 1
+hover_scale = Vector2(1.1, 1.1)
+wait_for = NodePath("")
+enter_time = 0.2
+enter_transition = 11
+enter_easing = 2
+enter_position = Vector2(-500, 0)
+enter_scale = Vector2(0, 0)
+
+[node name="Return" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Return"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Return/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Return/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Return"
+
+[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Return" node_paths=PackedStringArray("wait_for")]
+script = ExtResource("3_objlb")
+enter_animation = true
+hover_transition = 5
+hover_easing = 1
+hover_scale = Vector2(1.1, 1.1)
+wait_for = NodePath("../../Fullscreen/AnimationComponent")
+enter_time = 0.2
+enter_transition = 11
+enter_easing = 2
+enter_position = Vector2(-500, 0)
+enter_scale = Vector2(0, 0)
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]

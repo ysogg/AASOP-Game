@@ -1,5 +1,7 @@
 extends Node
 
+var main_menu_first_load = true
+
 var current_scene = null
 
 var current_score: int
