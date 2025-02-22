@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8iersnlh0kwc"]
+[gd_scene load_steps=12 format=3 uid="uid://b8iersnlh0kwc"]
 
 [ext_resource type="PackedScene" uid="uid://blaf1ix5576p3" path="res://interior/Background.tscn" id="1_7qruk"]
+[ext_resource type="Script" path="res://interior/root.gd" id="1_ei7sa"]
 [ext_resource type="PackedScene" uid="uid://cyv0kifia645j" path="res://interior/CharacterScreen.tscn" id="2_jwi68"]
 [ext_resource type="Script" path="res://interior/placedItem.gd" id="6_m7kno"]
 [ext_resource type="Script" path="res://interior/points.gd" id="12_7ucsl"]
@@ -95,20 +96,19 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ei7sa")
 
 [node name="Node2D" parent="." instance=ExtResource("1_7qruk")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -347.0
-offset_top = -206.0
-offset_right = 1573.0
-offset_bottom = 874.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 1
 grow_vertical = 1
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_jwi68")]
-position = Vector2(145, 215)
+position = Vector2(960, 671)
 
 [node name="points" type="Node2D" parent="CharacterBody2D"]
 script = ExtResource("12_7ucsl")
@@ -123,14 +123,13 @@ libraries = {
 "": SubResource("AnimationLibrary_qfn7s")
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
-
 [node name="FloorItem" type="Node2D" parent="."]
-position = Vector2(-3, 2)
 script = ExtResource("20_pwi6b")
 
 [node name="PlacedItem" type="Node2D" parent="."]
 script = ExtResource("6_m7kno")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
 
 [connection signal="dropped_item" from="CharacterBody2D" to="FloorItem" method="_on_character_body_2d_dropped_item"]

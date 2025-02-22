@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
+@onready var root: Node2D = $".."
+
 # VARIABLES FOR CAR HANDLING
 var wheel_base = 90 # length of the sprite basically
 @export var SPEED = 700
 @export var TURN_ANGLE = 10 
+@export var rotation_speed: float = 0.2
 
-var steer_direction
+var steer_direction = 0
 var state # current 2 state system, Driving and Bouncing
 var timer : Timer # timer for how long each bounce will last
 
@@ -39,17 +42,22 @@ func _physics_process(delta: float) -> void:
 
 func get_input() -> void:
 	var turn = 0
-	if Input.is_action_pressed("right"):
-		turn = 1
-	if Input.is_action_pressed("left"):
-		turn = -1
-	if turn == 0:
-		steer_direction = -1 * (Vector2(100, 0) + velocity).angle()
-	else:
-		steer_direction = turn * TURN_ANGLE
+	if root.check_inside() == false:
+		if Input.is_action_pressed("right"):
+			turn = 1
+		if Input.is_action_pressed("left"):
+			turn = -1
+		if turn == 0:
+			steer_direction = -1 * (Vector2(100, 0) + velocity).angle()
+		else:
+			steer_direction = turn * TURN_ANGLE
 	velocity = transform.x * SPEED # adjust velocity here
 	
 func calculate_steering(delta) -> void:
+	if root.check_inside() == true:
+		rotation = lerp_angle(rotation, 0, rotation_speed)
+		velocity = round(velocity)
+		return
 	var rear_wheel = position - transform.x * wheel_base/2.0
 	var front_wheel = position + transform.x * wheel_base/2.0
 	rear_wheel += velocity * delta
@@ -58,8 +66,7 @@ func calculate_steering(delta) -> void:
 	if(new_heading.x < 0):
 		new_heading.x = 0
 	velocity = new_heading * velocity.length()
-	rotation = new_heading.angle()
-	
+	rotation = lerp_angle(rotation, clamp(new_heading.angle(), deg_to_rad(-20), deg_to_rad(20)), rotation_speed)
 	
 # HERE IS WHERE THE COLLSION WORK IS TO DO DONE 
 func on_collision(collided) -> void:

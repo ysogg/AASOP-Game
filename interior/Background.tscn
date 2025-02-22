@@ -90,13 +90,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 367.0
+offset_bottom = -0.199951
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.734167, 0.45, 1)
 
 [node name="Box1" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5rj6g")
-position = Vector2(182, 76)
+position = Vector2(182, 443)
 texture = ExtResource("3_yu2kh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Box1"]
@@ -128,7 +130,7 @@ text = "Plates"
 
 [node name="Box2" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ah3bl")
-position = Vector2(417, 77)
+position = Vector2(417, 444)
 texture = ExtResource("3_yu2kh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Box2"]
@@ -161,6 +163,7 @@ text = "Wraps"
 metadata/_edit_use_anchors_ = true
 
 [node name="ScoreLabels" type="StaticBody2D" parent="."]
+position = Vector2(0, 367)
 
 [node name="CurrentScore" type="RichTextLabel" parent="ScoreLabels"]
 offset_left = 1015.0
@@ -172,7 +175,7 @@ script = ExtResource("4_ri5i1")
 
 [node name="ItemSpotPlates" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_eme56")
-position = Vector2(1633, 619)
+position = Vector2(1633, 874)
 scale = Vector2(1.96, 1.96)
 texture = ExtResource("5_axv23")
 
@@ -209,7 +212,7 @@ text = "Plate Depot"
 
 [node name="ItemSpotWraps" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_35vgu")
-position = Vector2(1637, 260)
+position = Vector2(1637, 542)
 scale = Vector2(1.965, 1.965)
 texture = ExtResource("5_axv23")
 
@@ -243,7 +246,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PrepZone1" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_27iso")
-position = Vector2(556, 724)
+position = Vector2(556, 810)
 scale = Vector2(2, 2)
 texture = ExtResource("6_wiq4j")
 

@@ -92,7 +92,7 @@ func load_chunk() -> void:
 		
 	#load first chunk one chunk_size behind the player
 	if loaded_chunks.is_empty():
-		chunk.global_position = Vector2( -ceil(road_length/2) * chunk_size, 0)
+		chunk.global_position = Vector2(-ceil(road_length/2) * chunk_size, 0)
 	else:
 		var last_chunk = loaded_chunks[-1]
 		chunk.global_position = last_chunk.global_position + Vector2(chunk_size, 0)
@@ -107,16 +107,15 @@ func load_chunk() -> void:
 	if (chunk_count > course_length):
 		# get the fuck out	
 		# load a final chunk
-		
 		return
 
 func load_new_road_chunk() -> void:
 	load_chunk()
-	print("Loading new chunk.")
+	#print("Loading new chunk.")
 
 func unload_old_road_chunk() -> void:
 	if loaded_chunks.size() <= road_length:
 		return
 	var chunk_to_unload = loaded_chunks.pop_front()
 	chunk_to_unload.queue_free()
-	print("Unloading old chunk.")
+	#print("Unloading old chunk.")
