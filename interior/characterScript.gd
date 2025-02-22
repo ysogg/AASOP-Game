@@ -144,7 +144,7 @@ func _interact():
 				Global.current_score += 500
 
 				# Set number position and make it visible
-				points.global_position = global_position + Vector2(700, 200)  # Adjust position
+				points.global_position = global_position # Adjust position
 				points.visible = true  
 				number_sprite.visible = true
 				# Play animation to float up and disappear

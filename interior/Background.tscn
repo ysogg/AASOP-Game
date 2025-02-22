@@ -793,6 +793,7 @@ offset_bottom = 18.0
 text = "Wraps"
 metadata/_edit_use_anchors_ = true
 
+
 [node name="ItemReceiver Fries" type="Sprite2D" parent="Receivers Folder"]
 material = SubResource("ShaderMaterial_dps3f")
 position = Vector2(1318, 1032)

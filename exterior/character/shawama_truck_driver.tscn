@@ -1,22 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://28c5e34cmf0d"]
 
 [ext_resource type="Script" path="res://exterior/character/shawama_truck_driver.gd" id="1_6b6ts"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j8rcb"]
-load_path = "res://.godot/imported/top_down.png-6728f4e89148920b679e8d4eee6d9a6f.ctex"
+[ext_resource type="Texture2D" uid="uid://2bf5h0mbg7y8" path="res://exterior/assets/top_down.png" id="2_vrtoa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ad7n"]
 radius = 20.0
 height = 90.0
 
 [node name="ShawamaTruckDriver" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_6b6ts")
+SPEED = 800
+TURN_ANGLE = 7
+IMPACT_TIME_SCALE = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 rotation = 1.5708
 scale = Vector2(2.58333, 2.85937)
-texture = SubResource("CompressedTexture2D_j8rcb")
+texture = ExtResource("2_vrtoa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
