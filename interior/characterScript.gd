@@ -12,12 +12,19 @@ class_name Player extends CharacterBody2D
 @onready var interactLabel = $InteractionComponents/InteractLabel
 @onready var dash_timer: Timer = $DashTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var loading_bar: Sprite2D = $LoadingBar
+
 
 signal dropped_item
 signal picked_up_item
 signal placed_item
 signal removed_placed_item
 
+var task_duration = 5.0
+var elapsed_time = 0.0
+var is_task_active = false
+var interact_count = 0
+var required_count = 11
 var dashing: bool = false
 #cooldown
 var can_dash: bool = true
@@ -26,6 +33,9 @@ var dash_cooldown: float = 0.5
 const DASH_PARTICLES = preload("res://interior/character/dash_particles.tscn")
 
 func get_input():
+	if is_task_active:
+		velocity = Vector2.ZERO
+		return
 	var dir = Input.get_vector("left", "right", "up", "down").normalized()
 	if !dashing:
 		velocity = dir * speed
@@ -70,7 +80,13 @@ func _interact():
 	var container_full = false
 	var table_placed_item = false
 	var ground_item = false
-	
+	var mashable = false
+	if is_task_active:
+		interact_count += 1
+		update_loading_bar()
+		if interact_count >= required_count:
+			task_completed()
+		return
 	if all_interactions:
 		for zone in all_interactions:
 			if zone.item_provider: in_provider = true
@@ -79,9 +95,23 @@ func _interact():
 			if in_receiver && in_provider: in_prep = true
 			if zone.interact_label == "PlacedItem": table_placed_item = true
 			if zone.interact_label == "GroundItem": ground_item = true
+			if zone.mashable: mashable = true
 
 		if in_prep && table_placed_item && !Global.held_object:
-			removed_placed_item.emit(all_interactions)
+			if mashable:
+				for zone in all_interactions:
+					if zone.interact_label == "PlacedItem":
+						if !zone.mashed:
+							start_task()
+						else:
+							removed_placed_item.emit(all_interactions)
+							for zone2 in all_interactions:
+								zone2.container_status = "empty"
+							
+			else: 
+				removed_placed_item.emit(all_interactions)
+				for zone2 in all_interactions:
+					zone2.container_status = "empty"
 		elif in_prep:
 			if Global.held_object && container_full:
 				print("Container full")
@@ -132,6 +162,19 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+func start_task():
+	loading_bar.global_position = global_position + Vector2(-100, -200)
+	is_task_active = true
+	interact_count = 1
+	loading_bar.visible = true
+	loading_bar.region_enabled = true 
+	update_loading_bar()
+	
+func update_loading_bar():
+	var width = loading_bar.texture.get_width()
+	var reveal = int((interact_count / float(required_count)) * width)
+	loading_bar.region_rect = Rect2(0, 0, reveal, loading_bar.texture.get_height())
+	
 func _on_interaction_area_area_entered(area):
 	if all_interactions && area.interact_label != "GroundItem":
 		if all_interactions[0].get_parent().material:
@@ -161,3 +204,13 @@ func update_interactions():
 				all_interactions[0].get_parent().material.set_shader_parameter("width", 2)
 	else:
 		interactLabel.text = ""
+
+
+func task_completed():
+	is_task_active = false
+	loading_bar.visible = false
+	for zone in all_interactions:
+		if zone.interact_label == "PlacedItem":
+			zone.mashed = true
+			print("TRUED")
+	print("Task Done!")

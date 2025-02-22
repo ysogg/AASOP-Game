@@ -8,3 +8,4 @@ class_name Interactable extends Area2D
 @export var item_provider = false
 @export var item_receiver = false
 @export var mashable = false
+@export var mashed = false

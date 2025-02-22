@@ -473,7 +473,7 @@ debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="Label" type="Label" parent="Providers Folder/ItemProvider Plates"]
 anchors_preset = -1
-anchor_left = 0.0114789
+anchor_left = -1.23852
 anchor_top = -0.0108416
 anchor_right = -1.23852
 anchor_bottom = -0.0108416
@@ -823,6 +823,7 @@ debug_color = Color(0, 0.646164, 0.243608, 0.42)
 [node name="Label" type="Label" parent="Receivers Folder/ItemReceiver Fries"]
 visible = false
 anchors_preset = -1
+anchor_left = -0.3125
 anchor_right = -0.3125
 offset_left = 19.0
 offset_top = -5.0
@@ -1028,6 +1029,7 @@ interact_label = "Table1"
 container_type = "any"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepTable2/Interact"]
 shape = SubResource("RectangleShape2D_1uiow")
@@ -1158,6 +1160,5 @@ interact_label = "Chair"
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Chair/Interact"]
 position = Vector2(-4.71431, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bouhw")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
