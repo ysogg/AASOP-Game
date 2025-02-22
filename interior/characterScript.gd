@@ -38,13 +38,10 @@ func get_input():
 							Vector2(0.71,-0.71):225, 
 							Vector2(0.71,0.71):315
 						}
-	#0.707107
-	print(dir)
+						
 	var rounded_dir = (round(dir*pow(10,2))/pow(10,2))
 	if rounded_dir != Vector2(0,0):
-		get_node("RayCast2D").set_rotation(deg_to_rad(ray[rounded_dir]))
-
-	#get_node("StairCheck").set_rotation_degrees(Vector3(0, rad2deg(atan2(-direction.x, -direction.z)), 0))
+		get_node("InteractionComponents/RayCast2D").set_rotation(deg_to_rad(ray[rounded_dir]))
 
 	if !dashing:
 		velocity = dir * speed
