@@ -64,13 +64,12 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 text = "Play Game"
 
-[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/PlayGame" node_paths=PackedStringArray("wait_for")]
+[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/PlayGame"]
 script = ExtResource("3_h7ywy")
 enter_animation = true
 hover_transition = 5
 hover_easing = 1
 hover_scale = Vector2(1.1, 1.1)
-wait_for = NodePath("")
 enter_time = 0.3
 enter_transition = 11
 enter_easing = 2

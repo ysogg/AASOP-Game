@@ -20,6 +20,7 @@ signal picked_up_item
 signal placed_item
 signal removed_placed_item
 signal escape_menu
+signal door_pressed
 
 var task_duration = 5.0
 var elapsed_time = 0.0
@@ -37,25 +38,26 @@ func get_input():
 	if is_task_active:
 		velocity = Vector2.ZERO
 		return
-	var dir = Input.get_vector("left", "right", "up", "down").normalized()
-	#get_node("RayCast2D").set_rotation(Vector2(rad_to_deg(atan2(-dir.x, -dir.z))))
-	var ray : Dictionary = {
-							Vector2(-1,0):90, 
-							Vector2(1,0):270, 
-							Vector2(0,-1):180, 
-							Vector2(0,1):0, 
-							Vector2(-0.71,0.71):45, 
-							Vector2(-0.71,-0.71):135, 
-							Vector2(0.71,-0.71):225, 
-							Vector2(0.71,0.71):315
-						}
+	
+	if !Global.movement_lock:
+		var dir = Input.get_vector("left", "right", "up", "down").normalized()
+		var ray : Dictionary = {
+								Vector2(-1,0):90, 
+								Vector2(1,0):270, 
+								Vector2(0,-1):180, 
+								Vector2(0,1):0, 
+								Vector2(-0.71,0.71):45, 
+								Vector2(-0.71,-0.71):135, 
+								Vector2(0.71,-0.71):225, 
+								Vector2(0.71,0.71):315
+							}
 						
-	var rounded_dir = (round(dir*pow(10,2))/pow(10,2))
-	if rounded_dir != Vector2(0,0):
-		get_node("InteractionComponents/RayCast2D").set_rotation(deg_to_rad(ray[rounded_dir]))
+		var rounded_dir = (round(dir*pow(10,2))/pow(10,2))
+		if rounded_dir != Vector2(0,0):
+			get_node("InteractionComponents/RayCast2D").set_rotation(deg_to_rad(ray[rounded_dir]))
 
-	if !dashing:
-		velocity = dir * speed
+		if !dashing:
+			velocity = dir * speed
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash") and !dashing and can_dash:
@@ -91,6 +93,9 @@ func _updateSpeed():
 	particles.queue_free()
 
 func _interact():
+	if all_interactions[0].interact_label == "Door":
+		door_pressed.emit()
+		
 	var in_provider = false
 	var in_receiver = false
 	var in_prep = false

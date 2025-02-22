@@ -64,13 +64,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Fullscreen"
 
-[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Fullscreen" node_paths=PackedStringArray("wait_for")]
+[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Fullscreen"]
 script = ExtResource("3_objlb")
 enter_animation = true
 hover_transition = 5
 hover_easing = 1
 hover_scale = Vector2(1.1, 1.1)
-wait_for = NodePath("")
 enter_time = 0.2
 enter_transition = 11
 enter_easing = 2
