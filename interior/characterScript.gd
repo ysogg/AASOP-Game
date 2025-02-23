@@ -165,7 +165,10 @@ func _interact():
 		elif in_prep:
 			if Global.held_object && container_full:
 				print("Container full")
-			elif Global.held_object && (all_interactions[0].container_type == Global.held_object || all_interactions[0].container_type ==  "any"):
+			if all_interactions[0].container_type ==  "any":
+				if Global.held_object in ["raw_potatoes", "raw_onion", "uncut_tomato", "bagged_wraps", "uncut_lettuce"]:
+					placed_item.emit(all_interactions[0], Global.held_object, all_interactions[0].global_position)
+			elif Global.held_object && (all_interactions[0].container_type == Global.held_object):
 				placed_item.emit(all_interactions[0], Global.held_object, all_interactions[0].global_position)
 		elif in_provider && !Global.held_object:
 				print("Picked up: " + all_interactions[0].container_type)
