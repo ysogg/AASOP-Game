@@ -45,7 +45,7 @@ func _ready() -> void:
 	hazard_warning_timer.timeout.connect(_hide_hazard_waring)
 	
 	hazard_timer = Timer.new()
-	hazard_timer.set_wait_time(rng.randf_range(17,24))
+	hazard_timer.set_wait_time(rng.randf_range(10,15))
 	hazard_timer.set_one_shot(true)
 	add_child(hazard_timer)
 	hazard_timer.start()
