@@ -1001,6 +1001,7 @@ interact_label = "Table1"
 container_type = "any"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepTable1/Interact"]
 shape = SubResource("RectangleShape2D_48cea")
@@ -1054,6 +1055,7 @@ interact_label = "Stove"
 container_type = "cut_onion"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepStove/Interact"]
 shape = SubResource("RectangleShape2D_4g866")
@@ -1080,6 +1082,7 @@ interact_label = "Fryer"
 container_type = "raw_fries"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepFryer/Interact"]
 shape = SubResource("RectangleShape2D_2upo1")
@@ -1106,6 +1109,7 @@ interact_label = "Sink"
 container_type = "dirty_plate"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepSink/Interact"]
 shape = SubResource("RectangleShape2D_35aaw")
@@ -1132,6 +1136,7 @@ interact_label = "Spit"
 container_type = "raw_chicken"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepSpit/Interact"]
 shape = SubResource("RectangleShape2D_nkdte")

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://exterior/levelgenerator/level_generator.gd" id="1_7h62x"]
 
-[node name="LevelGenerator" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="LevelGenerator" type="Node2D"]
 z_index = -1
 script = ExtResource("1_7h62x")
-player = NodePath("")
