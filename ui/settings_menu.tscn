@@ -78,11 +78,11 @@ enter_easing = 2
 enter_position = Vector2(-500, 0)
 enter_scale = Vector2(0, 0)
 
-[node name="Button" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="Volume" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 button_mask = 0
 
-[node name="HSlider" type="HSlider" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Button"]
+[node name="HSlider" type="HSlider" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Volume"]
 layout_mode = 0
 offset_left = 65.0
 offset_top = 8.0
@@ -93,10 +93,23 @@ step = 0.001
 script = ExtResource("4_psbtx")
 bus_name = "Master"
 
-[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Button"]
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Volume"]
 position = Vector2(36, 20)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("5_8wpyl")
+
+[node name="AnimationComponent" type="Node" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Volume" node_paths=PackedStringArray("wait_for")]
+script = ExtResource("3_objlb")
+enter_animation = true
+hover_transition = 5
+hover_easing = 1
+hover_scale = Vector2(1.1, 1.1)
+wait_for = NodePath("../../Fullscreen/AnimationComponent")
+enter_time = 0.2
+enter_transition = 11
+enter_easing = 2
+enter_position = Vector2(-500, 0)
+enter_scale = Vector2(0, 0)
 
 [node name="Return" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -124,7 +137,7 @@ enter_animation = true
 hover_transition = 5
 hover_easing = 1
 hover_scale = Vector2(1.1, 1.1)
-wait_for = NodePath("../../Fullscreen/AnimationComponent")
+wait_for = NodePath("../../Volume/AnimationComponent")
 enter_time = 0.2
 enter_transition = 11
 enter_easing = 2
@@ -132,5 +145,5 @@ enter_position = Vector2(-500, 0)
 enter_scale = Vector2(0, 0)
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
-[connection signal="value_changed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Button/HSlider" to="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Button/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Volume/HSlider" to="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Volume/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]
