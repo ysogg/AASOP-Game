@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0d8qfcdr0svt"]
+[gd_scene load_steps=9 format=3 uid="uid://d0d8qfcdr0svt"]
 
 [ext_resource type="PackedScene" uid="uid://b8iersnlh0kwc" path="res://interior/root.tscn" id="1_immum"]
 [ext_resource type="Script" path="res://maingame/main.gd" id="1_kxj0q"]
 [ext_resource type="PackedScene" uid="uid://b7vg5c1hlcrdo" path="res://exterior/root.tscn" id="2_g28eh"]
+[ext_resource type="PackedScene" uid="uid://bhu1ut14tdw83" path="res://maingame/EndScreen.tscn" id="3_tmfsq"]
 [ext_resource type="Texture2D" uid="uid://cqxlyaw8bbmcq" path="res://exterior/warning.png" id="4_jknt6"]
 [ext_resource type="Script" path="res://maingame/warning_2.gd" id="5_ojwrs"]
 [ext_resource type="Script" path="res://maingame/warning_3.gd" id="6_2wtxb"]
@@ -12,6 +13,9 @@
 script = ExtResource("1_kxj0q")
 
 [node name="Inside" parent="." instance=ExtResource("1_immum")]
+
+[node name="EndScreen" parent="." instance=ExtResource("3_tmfsq")]
+visible = false
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -63,3 +67,9 @@ position = Vector2(1217.6, 76.6)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_jknt6")
 script = ExtResource("7_wx3ec")
+
+[node name="End Timer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+
+[connection signal="timeout" from="End Timer" to="." method="_on_end_timer_timeout"]
