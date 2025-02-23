@@ -42,7 +42,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxEmpty_i4nq8")
-text = "Main Menu"
+text = "Settings"
 horizontal_alignment = 1
 
 [node name="Fullscreen" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
