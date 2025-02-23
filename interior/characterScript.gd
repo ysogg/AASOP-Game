@@ -165,6 +165,7 @@ func _interact():
 		elif in_prep:
 			if Global.held_object && container_full:
 				print("Container full")
+				AudioManager.play_err()
 			elif Global.held_object && (all_interactions[0].container_type == Global.held_object || all_interactions[0].container_type ==  "any"):
 				placed_item.emit(all_interactions[0], Global.held_object, all_interactions[0].global_position)
 		elif in_provider && !Global.held_object:
@@ -183,11 +184,13 @@ func _interact():
 				number_sprite.visible = true
 				# Play animation to float up and disappear
 				anim_player.play("float")
+				AudioManager.play_ding()
 				
 		elif all_interactions[0].interact_label == "GroundItem" && !Global.held_object:
 			picked_up_item.emit(all_interactions[0], all_interactions[0].item_type)
 		else:
 			print("nuh uh")
+			AudioManager.play_err()
 	else:
 		if Global.held_object:
 			dropped_item.emit(Global.held_object, position)
