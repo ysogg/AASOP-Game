@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://interior/interact_zone.gd" id="2_mi23o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpgd5"]
-size = Vector2(23.0667, 22.5333)
+size = Vector2(31.6, 35)
 
 [node name="FloorItem" type="Node2D"]
 
