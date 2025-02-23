@@ -264,6 +264,17 @@ func task_completed():
 	loading_bar.visible = false
 	for zone in all_interactions:
 		if zone.interact_label == "PlacedItem":
+			if zone.mashed == true:
+				zone.cooked = true
 			zone.mashed = true
+			if zone.item_type == "dirty_plate": zone.item_type = "plate"
+			elif zone.item_type == "bagged_wraps": zone.item_type = "wraps"
+			elif zone.item_type == "raw_potatoes": zone.item_type = "raw_fries"
+			elif zone.item_type == "raw_fries": zone.item_type = "fries"
+			elif zone.item_type == "raw_chicken": zone.item_type = "chicken"
+			elif zone.item_type == "uncut_lettuce": zone.item_type = "lettuce"
+			elif zone.item_type == "uncut_tomato": zone.item_type = "tomato"
+			elif zone.item_type == "raw_onion": zone.item_type = "cut_onion"
+			elif zone.item_type == "cut_union": zone.item_type = "onion"
 			print("TRUED")
 	print("Task Done!")

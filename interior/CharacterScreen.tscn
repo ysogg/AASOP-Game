@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyv0kifia645j"]
+[gd_scene load_steps=21 format=3 uid="uid://cyv0kifia645j"]
 
 [ext_resource type="Script" path="res://interior/characterScript.gd" id="1_lgaw7"]
 [ext_resource type="Texture2D" uid="uid://dgj0ypedohwre" path="res://interior/ezgif-split/guy000.png" id="2_74y7c"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://curdbl707ptmu" path="res://interior/character/guy012.png" id="14_djjb7"]
 [ext_resource type="Texture2D" uid="uid://deo3gsnt6x4bn" path="res://interior/character/guy013.png" id="15_hf4um"]
 [ext_resource type="Texture2D" uid="uid://c7ixaljd67k8i" path="res://interior/character/guy014.png" id="16_roud4"]
+[ext_resource type="Texture2D" uid="uid://so4p21po2yqp" path="res://interior/loading.png" id="17_xeoqq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pkgl1"]
 radius = 4.0
@@ -147,6 +148,14 @@ animation = &"stand"
 position = Vector2(-1, 14)
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_vuwhr")
+
+[node name="LoadingBar" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("17_xeoqq")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 323.664, 1007.34, 252.341)
 
 [connection signal="area_entered" from="InteractionComponents/RayCast2D/InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionComponents/RayCast2D/InteractionArea" to="." method="_on_interaction_area_area_exited"]
