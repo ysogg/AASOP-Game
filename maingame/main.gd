@@ -48,10 +48,12 @@ func transition_scene(inside: bool) -> void:
 		outside_scene.reparent(self)
 		move_child(outside_scene, 1)
 		transition_to_outside.emit()
+		AudioManager.play_driving()
 	else:
 		Global.movement_lock = false
 		outside_scene.reparent(sub_viewport)
 		inside_scene.reparent(self)
 		inside_scene.visible = true
 		move_child(inside_scene, 0)
+		AudioManager.driving.stop()
 		transition_to_inside.emit()
