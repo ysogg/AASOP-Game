@@ -3,6 +3,8 @@ extends Node2D
 @onready var inside_scene: Node2D = $Inside
 @onready var outside_scene: Node2D = $Control/SubViewportContainer/SubViewport/Exterior
 @onready var sub_viewport: SubViewport = $Control/SubViewportContainer/SubViewport
+@onready var end_screen: Node2D = $EndScreen
+@onready var end_timer = $"End Timer"
 
 signal transition_to_inside
 signal transition_to_outside
@@ -13,9 +15,13 @@ func _init() -> void:
 	AudioManager.play_gameplay()
 
 func _ready() -> void:
+	end_timer.start()
 	if get_tree().get_first_node_in_group("Player"):
 		var player = get_tree().get_first_node_in_group("Player")
 		player.door_pressed.connect(_on_door_pressed)
+	if get_tree().get_first_node_in_group("End"):
+		var end = get_tree().get_first_node_in_group("End")
+		end.generate_end_signal.connect(_on_end_condition)
 
 func _input(event: InputEvent) -> void:
 	#use for debug
@@ -34,6 +40,10 @@ func _input(event: InputEvent) -> void:
 func _on_door_pressed() -> void:
 	transition_scene(is_inside)
 	is_inside = !is_inside
+	
+func _on_end_condition() -> void:
+	end_screen.visible = true
+	#end_screen.reparent(self)
 
 func transition_scene(inside: bool) -> void:
 	if inside:
@@ -55,3 +65,9 @@ func transition_scene(inside: bool) -> void:
 		inside_scene.visible = true
 		move_child(inside_scene, 0)
 		transition_to_inside.emit()
+
+
+func _on_end_timer_timeout() -> void:
+	end_screen.visible = true
+	inside_scene.visible = false
+	outside_scene.visible = false
