@@ -445,7 +445,6 @@ container_type = "dirty_plate"
 item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Plates/Interact"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_dd7tg")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -475,7 +474,6 @@ scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Wraps/Collider"]
 position = Vector2(-0.000244141, -31.36)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6ymk1")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Wraps"]
@@ -490,7 +488,6 @@ item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Wraps/Interact"]
 position = Vector2(1.6333, 11.1067)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_347tg")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -520,7 +517,6 @@ scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Potatoes/Collider"]
 position = Vector2(0, -31.36)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6ikp2")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Potatoes"]
@@ -535,7 +531,6 @@ item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Potatoes/Interact"]
 position = Vector2(-1.63342, 11.1067)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pmv54")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -565,7 +560,6 @@ scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Chicken/Collider"]
 position = Vector2(-6.10352e-05, -19.3201)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_e1kgw")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Chicken"]
@@ -580,7 +574,6 @@ item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Chicken/Interact"]
 position = Vector2(-4.47998, 23.38)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jojkp")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -610,7 +603,6 @@ scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Lettuce/Collider"]
 position = Vector2(-6.10352e-05, -19.32)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_13jpq")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Lettuce"]
@@ -625,7 +617,6 @@ item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Lettuce/Interact"]
 position = Vector2(-6.10352e-05, 23.38)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_w7edp")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -655,7 +646,6 @@ scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Tomato/Collider"]
 position = Vector2(-6.10352e-05, -19.3201)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_srbfb")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Tomato"]
@@ -670,7 +660,6 @@ item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Tomato/Interact"]
 position = Vector2(-6.10352e-05, 23.38)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jyajj")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -700,7 +689,6 @@ scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Onion/Collider"]
 position = Vector2(-6.10352e-05, -19.32)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nrvmm")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Onion"]
@@ -715,7 +703,6 @@ item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Onion/Interact"]
 position = Vector2(1.3999, 23.38)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hp0iu")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -1085,7 +1072,6 @@ mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepStove/Interact"]
 position = Vector2(-1.5715, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4g866")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -1114,7 +1100,6 @@ mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepFryer/Interact"]
 position = Vector2(1.57144, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2upo1")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -1143,7 +1128,6 @@ mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepSink/Interact"]
 position = Vector2(1.78571, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_35aaw")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -1209,5 +1193,4 @@ texture = SubResource("CompressedTexture2D_q5iix")
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Front Counter/Collider"]
 position = Vector2(-4.57764e-05, 6.2858)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_m4q3m")
