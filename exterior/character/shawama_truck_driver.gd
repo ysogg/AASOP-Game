@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var root: Node2D = $".."
 
+signal truck_hit
+
 # VARIABLES FOR CAR HANDLING
 var wheel_base = 90 # length of the sprite basically
 @export var SPEED = 700
@@ -87,4 +89,5 @@ func on_collision(collided) -> void:
 	Engine.time_scale = original_time_scale
 	
 	# ALSO PUT THE CODE HERE THAT WILL SLOSH THE TRUCK AROUND
-	
+	Global.current_score -= 150
+	truck_hit.emit()

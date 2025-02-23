@@ -14,6 +14,15 @@ class_name Player extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var loading_bar: Sprite2D = $LoadingBar
 
+#@onready var chicken_receiver = get_node("../Node2D/Receivers Folder/ItemReceiver Chicken/Interact")
+@onready var receiver_list = [
+	get_node("../Node2D/Receivers Folder/ItemReceiver Plates/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Wraps/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Fries/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Lettuce/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Tomato/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Onion/Interact"),
+]
 
 signal dropped_item
 signal picked_up_item
@@ -33,6 +42,22 @@ var can_dash: bool = true
 var dash_cooldown: float = 0.5
 
 const DASH_PARTICLES = preload("res://interior/character/dash_particles.tscn")
+
+func _ready():
+	if get_tree().get_first_node_in_group("Truck"):
+		var truck = get_tree().get_first_node_in_group("Truck")
+		truck.truck_hit.connect(_on_truck_hit)
+	
+	#print(receiver_list)
+
+func _on_truck_hit():
+	var rand = RandomNumberGenerator.new()
+	for rec in receiver_list:
+		if rec.container_status == "full":
+			var num = rand.randf_range(0, 100)
+			if num > 60:
+				rec.container_status = "empty"
+				#spawn item on ground
 
 func get_input():
 	if is_task_active:

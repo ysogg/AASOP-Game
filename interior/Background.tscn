@@ -393,12 +393,14 @@ color = Color(1, 0.734167, 0.45, 1)
 [node name="ScoreLabels" type="StaticBody2D" parent="."]
 
 [node name="CurrentScore" type="RichTextLabel" parent="ScoreLabels"]
-offset_left = 1015.0
-offset_top = 25.0
-offset_right = 1447.0
-offset_bottom = 65.0
+offset_left = 1485.0
+offset_top = 4.0
+offset_right = 1891.0
+offset_bottom = 44.0
+theme_override_font_sizes/normal_font_size = 26
 text = "Score: 0"
 script = ExtResource("4_ri5i1")
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
@@ -941,18 +943,18 @@ offset_bottom = 15.5
 text = "Tomato"
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemReceiver onion" type="Sprite2D" parent="Receivers Folder"]
+[node name="ItemReceiver Onion" type="Sprite2D" parent="Receivers Folder"]
 material = SubResource("ShaderMaterial_t70kk")
 position = Vector2(1734, 1032)
 scale = Vector2(3, 3)
 texture = SubResource("CompressedTexture2D_v62uq")
 
-[node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver onion"]
+[node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver Onion"]
 
-[node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver onion/Collider"]
+[node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Onion/Collider"]
 shape = SubResource("RectangleShape2D_aqwnu")
 
-[node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver onion"]
+[node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver Onion"]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
@@ -961,12 +963,12 @@ interact_label = "OnionReceiver"
 container_type = "onion"
 item_receiver = true
 
-[node name="Interaction Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver onion/Interact"]
+[node name="Interaction Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Onion/Interact"]
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_ac5r5")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
-[node name="Label" type="Label" parent="Receivers Folder/ItemReceiver onion"]
+[node name="Label" type="Label" parent="Receivers Folder/ItemReceiver Onion"]
 visible = false
 anchors_preset = -1
 anchor_left = -0.3125
