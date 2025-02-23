@@ -112,6 +112,7 @@ script = ExtResource("1_lgaw7")
 z_index = 1
 
 [node name="InteractLabel" type="Label" parent="InteractionComponents"]
+visible = false
 offset_left = -17.0
 offset_top = -131.0
 offset_right = 13.0
