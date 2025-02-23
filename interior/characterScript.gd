@@ -40,6 +40,7 @@ var dashing: bool = false
 #cooldown
 var can_dash: bool = true
 var dash_cooldown: float = 0.5
+var door_open: bool = false
 
 const DASH_PARTICLES = preload("res://interior/character/dash_particles.tscn")
 
@@ -89,6 +90,7 @@ func get_input():
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash") and !dashing and can_dash:
 		_updateSpeed()
+		AudioManager.play_dash()
 	if event.is_action_pressed("interact"):
 		_interact()
 
@@ -123,6 +125,7 @@ func _interact():
 	if all_interactions:
 		if all_interactions[0].interact_label == "Door":
 			door_pressed.emit()
+			door_open = true
 		
 	var in_provider = false
 	var in_receiver = false
@@ -155,6 +158,7 @@ func _interact():
 							start_task()
 						else:
 							removed_placed_item.emit(all_interactions)
+							AudioManager.play_pick_up()
 							for zone2 in all_interactions:
 								zone2.container_status = "empty"
 							
@@ -165,11 +169,14 @@ func _interact():
 		elif in_prep:
 			if Global.held_object && container_full:
 				print("Container full")
+				AudioManager.play_err()
 			elif Global.held_object && (all_interactions[0].container_type == Global.held_object || all_interactions[0].container_type ==  "any"):
 				placed_item.emit(all_interactions[0], Global.held_object, all_interactions[0].global_position)
+				AudioManager.play_dropped_item()
 		elif in_provider && !Global.held_object:
 				print("Picked up: " + all_interactions[0].container_type)
 				Global.held_object = all_interactions[0].container_type
+				AudioManager.play_pick_up()
 		elif in_receiver && Global.held_object:
 			if all_interactions[0].container_type == Global.held_object && !container_full:
 				print("Deposited: " + Global.held_object)
@@ -183,14 +190,21 @@ func _interact():
 				number_sprite.visible = true
 				# Play animation to float up and disappear
 				anim_player.play("float")
+				AudioManager.play_ding()
 				
 		elif all_interactions[0].interact_label == "GroundItem" && !Global.held_object:
 			picked_up_item.emit(all_interactions[0], all_interactions[0].item_type)
+			AudioManager.play_pick_up()
 		else:
 			print("nuh uh")
+			if door_open:
+				AudioManager.play_door()
+				return
+			AudioManager.play_err()
 	else:
 		if Global.held_object:
 			dropped_item.emit(Global.held_object, position)
+			AudioManager.play_dropped_item()
 		else:
 			print("empty hands empty hands!!")
 
@@ -220,6 +234,17 @@ func start_task():
 	update_loading_bar()
 	
 func update_loading_bar():
+	for zone in all_interactions:
+		if zone.interact_label == "PlacedItem":
+			var item_type = zone.item_type
+			if item_type == "uncut_lettuce" or item_type == "uncut_tomato" or item_type == "raw_onion" or item_type == "raw_potatoes":
+				AudioManager.play_chop()
+			elif item_type == "bagged_wraps":
+				AudioManager.play_plastic()
+			elif item_type == "raw_fries":
+				AudioManager.play_fry()
+			elif item_type == "dirty_plate":
+				AudioManager.play_water()
 	var width = loading_bar.texture.get_width()
 	var reveal = int((interact_count / float(required_count)) * width)
 	loading_bar.region_rect = Rect2(0, 0, reveal, loading_bar.texture.get_height())

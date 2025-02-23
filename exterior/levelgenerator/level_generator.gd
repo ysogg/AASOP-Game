@@ -33,9 +33,6 @@ var hazard_timer: Timer
 var busy_timer: Timer
 var rng: RandomNumberGenerator
 
-@onready var warning_1 = get_node("../../Control/SubViewportContainer/WarningIcons/Warning1")
-@onready var warning_2 = get_node("../../Control/SubViewportContainer/WarningIcons/Warning2")
-@onready var warning_3 = get_node("../../Control/SubViewportContainer/WarningIcons/Warning3")
 var hazard_warning_timer : Timer
 
 func _ready() -> void:
@@ -79,11 +76,17 @@ func load_chunk() -> void:
 		if(busy_selection == 1):
 			chunk = BUSY_ROAD_SCENE.instantiate()
 			if Global.warning1:
+				print("here1")
 				Global.warning1.visible = true
+				AudioManager.play_warning()
 			if Global.warning2:
+				print("heree2")
 				Global.warning2.visible = true
+				AudioManager.play_warning2()
 			if Global.warning3:
+				print("Here3")
 				Global.warning3.visible = true
+				AudioManager.play_warning3()
 		#busy_timer.set_wait_time(rng.randf_range(120,160))
 		busy_timer.start()
 		
@@ -95,21 +98,26 @@ func load_chunk() -> void:
 		var hazard_selection = rng.randi_range(1, NUMBER_OF_HAZARDS)
 		if(hazard_selection == 1):
 			if Global.warning3:
+				AudioManager.play_warning3()
 				Global.warning3.visible = true
 			hazard_warning_timer.start()
 			chunk = PEDESTRIAN_ROAD_SCENE.instantiate()
 		elif(hazard_selection == 2):
 			if Global.warning2:
+				AudioManager.play_warning2()
 				Global.warning2.visible = true
 			hazard_warning_timer.start()
 			chunk = CAR_CRASH_ROAD_SCENE.instantiate()
 		elif(hazard_selection == 3):
 			if Global.warning1:
 				Global.warning1.visible = true
+				AudioManager.play_warning()
 			if Global.warning2:
 				Global.warning2.visible = true
+				AudioManager.play_warning2()
 			if Global.warning3:
 				Global.warning3.visible = true
+				AudioManager.play_warning3()
 			hazard_warning_timer.start()
 			chunk = TRAFFIC_ROAD_SCENE.instantiate()
 		
