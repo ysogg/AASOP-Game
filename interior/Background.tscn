@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://interior/interact_zone.gd" id="1_a8rqw"]
 [ext_resource type="Shader" path="res://interior/Background.gdshader" id="2_5v6jv"]
+[ext_resource type="Texture2D" uid="uid://cuigbgn5b2a0p" path="res://interior/assets/dirty_plate_holder.png" id="4_hjtnh"]
 [ext_resource type="Script" path="res://interior/score_labels.gd" id="4_ri5i1"]
-[ext_resource type="Texture2D" uid="uid://dlqlb6v30g6nn" path="res://interior/assets/provider_temp.png" id="5_i1py1"]
 [ext_resource type="Texture2D" uid="uid://gcdglg73khjc" path="res://interior/assets/wrapped_wraps_full.png" id="6_efk48"]
 [ext_resource type="Texture2D" uid="uid://dk4m73kv2cg3q" path="res://interior/assets/empty_plate.png" id="6_w5ip2"]
 [ext_resource type="Texture2D" uid="uid://b6mphuldbe4ab" path="res://interior/assets/floor_tileset.png" id="7_1wecp"]
@@ -61,7 +61,7 @@ shader_parameter/add_margins = true
 size = Vector2(61.9993, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd7tg"]
-size = Vector2(62.72, 83.6267)
+size = Vector2(63.3733, 92.7733)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vasv1"]
 shader = ExtResource("2_5v6jv")
@@ -424,9 +424,9 @@ shape = SubResource("RectangleShape2D_eybg2")
 
 [node name="ItemProvider Plates" type="Sprite2D" parent="Providers Folder"]
 material = SubResource("ShaderMaterial_eme56")
-position = Vector2(114, 559)
+position = Vector2(114, 544)
 scale = Vector2(3, 3)
-texture = ExtResource("5_i1py1")
+texture = ExtResource("4_hjtnh")
 
 [node name="Collider" type="StaticBody2D" parent="Providers Folder/ItemProvider Plates"]
 scale = Vector2(0.510204, 0.510204)
@@ -445,6 +445,8 @@ container_type = "dirty_plate"
 item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Plates/Interact"]
+position = Vector2(-0.326668, 4.57333)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_dd7tg")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
