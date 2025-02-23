@@ -15,3 +15,7 @@ func _on_fullscreen_pressed() -> void:
 func _on_return_pressed() -> void:
 	Global.pause_menu_enabled = false
 	Global.game_controller.change_gui_scene("res://ui/gameplay_ui.tscn")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

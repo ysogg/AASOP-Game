@@ -446,7 +446,6 @@ item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Plates/Interact"]
 position = Vector2(-0.326668, 4.57333)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_dd7tg")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
