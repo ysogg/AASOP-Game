@@ -3,11 +3,12 @@
 [ext_resource type="Script" path="res://interior/interact_zone.gd" id="2_mi23o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpgd5"]
+size = Vector2(23.0667, 22.5333)
 
 [node name="FloorItem" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 
 [node name="Item" type="Area2D" parent="Sprite2D"]
 collision_layer = 4
@@ -17,6 +18,5 @@ script = ExtResource("2_mi23o")
 interact_label = "GroundItem"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Item"]
-scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_lpgd5")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
