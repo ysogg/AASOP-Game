@@ -267,7 +267,7 @@ func task_completed():
 			if zone.mashed == true:
 				zone.cooked = true
 			zone.mashed = true
-			if zone.item_type == "dirty_plate": zone.item_type = "plate"
+			if zone.item_type == "dirty_plate": zone.item_type = "plates"
 			elif zone.item_type == "bagged_wraps": zone.item_type = "wraps"
 			elif zone.item_type == "raw_potatoes": zone.item_type = "raw_fries"
 			elif zone.item_type == "raw_fries": zone.item_type = "fries"
