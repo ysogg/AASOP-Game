@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://bbbrnx18887rq" path="res://interior/assets/empty_fries.png" id="8_2xwet"]
 [ext_resource type="Texture2D" uid="uid://b3gxavvnaw8e7" path="res://interior/assets/stovetop.png" id="8_616m2"]
 [ext_resource type="Texture2D" uid="uid://ckmhpbrvd5po2" path="res://interior/assets/rawchickenfridge.png" id="8_hsp5x"]
-[ext_resource type="Texture2D" uid="uid://biw0eo3052w5x" path="res://interior/assets/mid_spit.png" id="9_f6nw2"]
 [ext_resource type="Texture2D" uid="uid://b8ui45cr773nb" path="res://interior/assets/empty_chicken.png" id="9_kxjwc"]
 [ext_resource type="Texture2D" uid="uid://jn47rsemdups" path="res://interior/assets/lettuce_fridge.png" id="9_qlpjr"]
 [ext_resource type="Texture2D" uid="uid://dpaspxwjj5gc4" path="res://interior/assets/tomato_fridge.png" id="10_65qte"]
@@ -23,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dqy4r1wgv5gi6" path="res://interior/assets/empty_tomato.png" id="11_th0nb"]
 [ext_resource type="Texture2D" uid="uid://d0xqcgidpm5py" path="res://interior/assets/empty_onion.png" id="12_wrddn"]
 [ext_resource type="Texture2D" uid="uid://dglrs63syf7gl" path="res://interior/assets/frier.png" id="21_vaxjx"]
+[ext_resource type="Texture2D" uid="uid://dxbuq03sf04lv" path="res://interior/assets/empty_spit.png" id="22_cbrdb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agw5y"]
 texture = ExtResource("7_1wecp")
@@ -58,7 +58,7 @@ shader_parameter/inside = true
 shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tauv1"]
-size = Vector2(61.9993, 62)
+size = Vector2(62.72, 9.14668)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd7tg"]
 size = Vector2(63.3733, 92.7733)
@@ -288,7 +288,7 @@ shader_parameter/add_margins = true
 size = Vector2(64, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4g866"]
-size = Vector2(35.1428, 40)
+size = Vector2(31.9999, 40)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwmps"]
 shader = ExtResource("2_5v6jv")
@@ -333,7 +333,7 @@ shader_parameter/add_margins = true
 size = Vector2(32, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdte"]
-size = Vector2(53.7143, 50.2858)
+size = Vector2(35.4286, 40.0001)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3bkf"]
 shader = ExtResource("2_5v6jv")
@@ -432,6 +432,8 @@ texture = ExtResource("4_hjtnh")
 scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Plates/Collider"]
+position = Vector2(0, -26.7867)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tauv1")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Plates"]
@@ -1050,7 +1052,7 @@ debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="PrepStove" type="Sprite2D" parent="Prep Tables Folder"]
 material = SubResource("ShaderMaterial_mrv2f")
-position = Vector2(968, 552)
+position = Vector2(1039, 552)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("8_616m2")
 
@@ -1072,13 +1074,14 @@ item_receiver = true
 mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepStove/Interact"]
-position = Vector2(-1.5715, 0)
+position = Vector2(-9.15527e-05, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4g866")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="PrepFryer" type="Sprite2D" parent="Prep Tables Folder"]
 material = SubResource("ShaderMaterial_mwmps")
-position = Vector2(1080, 552)
+position = Vector2(1151, 552)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("21_vaxjx")
 
@@ -1134,14 +1137,14 @@ debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="PrepSpit" type="Sprite2D" parent="Prep Tables Folder"]
 material = SubResource("ShaderMaterial_ml2at")
-position = Vector2(544, 815)
+position = Vector2(927, 496)
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("9_f6nw2")
+texture = ExtResource("22_cbrdb")
 
 [node name="Collider" type="StaticBody2D" parent="Prep Tables Folder/PrepSpit"]
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepSpit/Collider"]
-position = Vector2(0, -14)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_g7i7l")
 
 [node name="Interact" type="Area2D" parent="Prep Tables Folder/PrepSpit"]
@@ -1156,7 +1159,7 @@ item_receiver = true
 mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepSpit/Interact"]
-position = Vector2(1.52588e-05, -1.52588e-05)
+position = Vector2(-1.71429, 16)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_nkdte")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
