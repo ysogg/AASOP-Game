@@ -93,8 +93,9 @@ func _updateSpeed():
 	particles.queue_free()
 
 func _interact():
-	if all_interactions[0].interact_label == "Door":
-		door_pressed.emit()
+	if all_interactions:
+		if all_interactions[0].interact_label == "Door":
+			door_pressed.emit()
 		
 	var in_provider = false
 	var in_receiver = false
