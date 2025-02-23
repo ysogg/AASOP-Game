@@ -58,6 +58,8 @@ func _on_truck_hit():
 			if num > 60:
 				rec.container_status = "empty"
 				#spawn item on ground
+				dropped_item.emit(rec.container_type, rec.global_position + Vector2(0,-75))
+				
 
 func get_input():
 	if is_task_active:
@@ -169,7 +171,7 @@ func _interact():
 				print("Picked up: " + all_interactions[0].container_type)
 				Global.held_object = all_interactions[0].container_type
 		elif in_receiver && Global.held_object:
-			if all_interactions[0].container_type == Global.held_object:
+			if all_interactions[0].container_type == Global.held_object && !container_full:
 				print("Deposited: " + Global.held_object)
 				all_interactions[0].container_status = "full"
 				Global.held_object = ""
