@@ -1,7 +1,7 @@
 extends Node
 
-@onready var main_menu: AudioStreamPlayer2D = $Music/MainMenu
-@onready var gameplay: AudioStreamPlayer2D = $Music/Gameplay
+@onready var main_menu: AudioStreamPlayer = $Music/MainMenu
+@onready var gameplay: AudioStreamPlayer = $Music/Gameplay
 
 @export var mute_all: bool = false
 @export var mute_music: bool = false

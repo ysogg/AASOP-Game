@@ -16,11 +16,12 @@ func _on_placed_item(area, type, pos) -> void:
 	var item_scene = load("res://interior/PlacedItem.tscn")
 	var instance = item_scene.instantiate()
 	instance.get_node("Sprite2D").texture = load("res://interior/assets/" + type + ".png")
-	instance.position = pos + Vector2(0, -17)
+	instance.position = pos + Vector2(0, -22)
 	add_child(instance)
 #
 	instance.get_node("Sprite2D/Item").item_type = Global.held_object
 	Global.held_object = ""
+
 
 func _on_removed_placed_item(areas) -> void:
 	var type = ""
@@ -38,3 +39,22 @@ func _on_removed_placed_item(areas) -> void:
 	
 	Global.held_object = type
 	print("Picked up placed item: " + type)
+
+#func _on_sprite_update(areas, type, pos) -> void:
+	#var table
+	#
+	#for area in areas:
+		#if area.interact_label == "PlacedItem":
+			#area.get_parent().queue_free()
+		#else:
+			#table = area
+	#
+	##area.container_status = "full"
+	##area.item_type = type
+	#var item_scene = load("res://interior/PlacedItem.tscn")
+	#var instance = item_scene.instantiate()
+	#instance.get_node("Sprite2D").texture = load("res://interior/assets/" + type + ".png")
+	#instance.position = pos + Vector2(0, -17)
+	#add_child(instance)
+##
+	#instance.get_node("Sprite2D/Item").item_type = Global.held_object

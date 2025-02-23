@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0d8qfcdr0svt"]
+[gd_scene load_steps=8 format=3 uid="uid://d0d8qfcdr0svt"]
 
 [ext_resource type="PackedScene" uid="uid://b8iersnlh0kwc" path="res://interior/root.tscn" id="1_immum"]
 [ext_resource type="Script" path="res://maingame/main.gd" id="1_kxj0q"]
 [ext_resource type="PackedScene" uid="uid://b7vg5c1hlcrdo" path="res://exterior/root.tscn" id="2_g28eh"]
+[ext_resource type="Texture2D" uid="uid://cqxlyaw8bbmcq" path="res://exterior/warning.png" id="4_jknt6"]
+[ext_resource type="Script" path="res://maingame/warning_2.gd" id="5_ojwrs"]
+[ext_resource type="Script" path="res://maingame/warning_3.gd" id="6_2wtxb"]
+[ext_resource type="Script" path="res://maingame/warning_1.gd" id="7_wx3ec"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kxj0q")
@@ -36,3 +40,26 @@ size = Vector2i(640, 320)
 render_target_update_mode = 4
 
 [node name="Exterior" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("2_g28eh")]
+
+[node name="WarningIcons" type="CanvasLayer" parent="Control/SubViewportContainer"]
+
+[node name="Warning2" type="Sprite2D" parent="Control/SubViewportContainer/WarningIcons"]
+visible = false
+position = Vector2(1217.6, 163.6)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_jknt6")
+script = ExtResource("5_ojwrs")
+
+[node name="Warning3" type="Sprite2D" parent="Control/SubViewportContainer/WarningIcons"]
+visible = false
+position = Vector2(1217.6, 245.6)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_jknt6")
+script = ExtResource("6_2wtxb")
+
+[node name="Warning1" type="Sprite2D" parent="Control/SubViewportContainer/WarningIcons"]
+visible = false
+position = Vector2(1217.6, 76.6)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_jknt6")
+script = ExtResource("7_wx3ec")

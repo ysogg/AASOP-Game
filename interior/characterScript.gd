@@ -165,10 +165,7 @@ func _interact():
 		elif in_prep:
 			if Global.held_object && container_full:
 				print("Container full")
-			if all_interactions[0].container_type ==  "any":
-				if Global.held_object in ["raw_potatoes", "raw_onion", "uncut_tomato", "bagged_wraps", "uncut_lettuce"]:
-					placed_item.emit(all_interactions[0], Global.held_object, all_interactions[0].global_position)
-			elif Global.held_object && (all_interactions[0].container_type == Global.held_object):
+			elif Global.held_object && (all_interactions[0].container_type == Global.held_object || all_interactions[0].container_type ==  "any"):
 				placed_item.emit(all_interactions[0], Global.held_object, all_interactions[0].global_position)
 		elif in_provider && !Global.held_object:
 				print("Picked up: " + all_interactions[0].container_type)
@@ -267,8 +264,7 @@ func task_completed():
 	loading_bar.visible = false
 	for zone in all_interactions:
 		if zone.interact_label == "PlacedItem":
-			if zone.mashed == true:
-				zone.cooked = true
+
 			zone.mashed = true
 			if zone.item_type == "dirty_plate": zone.item_type = "plates"
 			elif zone.item_type == "bagged_wraps": zone.item_type = "wraps"
@@ -278,6 +274,7 @@ func task_completed():
 			elif zone.item_type == "uncut_lettuce": zone.item_type = "lettuce"
 			elif zone.item_type == "uncut_tomato": zone.item_type = "tomato"
 			elif zone.item_type == "raw_onion": zone.item_type = "cut_onion"
-			elif zone.item_type == "cut_union": zone.item_type = "onion"
+			elif zone.item_type == "cut_onion": zone.item_type = "onion"
 			print("TRUED")
+			zone.get_parent().texture = load("res://interior/assets/" + zone.item_type + ".png")
 	print("Task Done!")

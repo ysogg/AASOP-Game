@@ -18,7 +18,7 @@ sources/0 = SubResource("TileSetAtlasSource_g188x")
 size = Vector2(957, 8.99347)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ynoe"]
-size = Vector2(752, 656)
+size = Vector2(482, 423)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rum6"]
 size = Vector2(3200, 74)
@@ -39,12 +39,12 @@ shape = SubResource("RectangleShape2D_cw6db")
 [node name="CarCrash" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarCrash"]
-position = Vector2(-595, -67)
+position = Vector2(-4, -6)
 shape = SubResource("RectangleShape2D_7ynoe")
 
 [node name="CHANGETOCARCRASHSPRITE" type="Sprite2D" parent="CarCrash"]
-position = Vector2(-555.5, -191)
-scale = Vector2(18.8542, 29.25)
+position = Vector2(0.999939, -60)
+scale = Vector2(10.1925, 15.8125)
 texture = ExtResource("3_55xnf")
 
 [node name="TopBumper" type="StaticBody2D" parent="."]

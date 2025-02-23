@@ -8,7 +8,7 @@ size = Vector2(139.16, 77.4201)
 [node name="PlacedItem" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 
 [node name="Item" type="Area2D" parent="Sprite2D"]
 scale = Vector2(0.510204, 0.510204)

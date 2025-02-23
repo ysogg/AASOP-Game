@@ -25,16 +25,27 @@ var chunk_width: int = 34 # in tiles
 var chunk_size: int = chunk_height * TILE_SIZE
 
 #how many chunks are loaded
-var road_length: int = 3
+var road_length: int = 6
 @export var course_length = 40 # level length in chunks
-var chunk_count = 3
+var chunk_count = 6
 
 var hazard_timer: Timer
 var busy_timer: Timer
 var rng: RandomNumberGenerator
 
+@onready var warning_1 = get_node("../../Control/SubViewportContainer/WarningIcons/Warning1")
+@onready var warning_2 = get_node("../../Control/SubViewportContainer/WarningIcons/Warning2")
+@onready var warning_3 = get_node("../../Control/SubViewportContainer/WarningIcons/Warning3")
+var hazard_warning_timer : Timer
+
 func _ready() -> void:
 	rng = RandomNumberGenerator.new()
+	
+	hazard_warning_timer = Timer.new()
+	hazard_warning_timer.set_wait_time(3)
+	hazard_warning_timer.set_one_shot(true)
+	add_child(hazard_warning_timer)
+	hazard_warning_timer.timeout.connect(_hide_hazard_waring)
 	
 	hazard_timer = Timer.new()
 	hazard_timer.set_wait_time(rng.randf_range(17,24))
@@ -67,7 +78,12 @@ func load_chunk() -> void:
 		var busy_selection = rng.randi_range(1, NUMBER_OF_BUSY)
 		if(busy_selection == 1):
 			chunk = BUSY_ROAD_SCENE.instantiate()
-			
+			if Global.warning1:
+				Global.warning1.visible = true
+			if Global.warning2:
+				Global.warning2.visible = true
+			if Global.warning3:
+				Global.warning3.visible = true
 		#busy_timer.set_wait_time(rng.randf_range(120,160))
 		busy_timer.start()
 		
@@ -78,10 +94,23 @@ func load_chunk() -> void:
 		# do another random select of one of the hazards
 		var hazard_selection = rng.randi_range(1, NUMBER_OF_HAZARDS)
 		if(hazard_selection == 1):
+			if Global.warning3:
+				Global.warning3.visible = true
+			hazard_warning_timer.start()
 			chunk = PEDESTRIAN_ROAD_SCENE.instantiate()
 		elif(hazard_selection == 2):
+			if Global.warning2:
+				Global.warning2.visible = true
+			hazard_warning_timer.start()
 			chunk = CAR_CRASH_ROAD_SCENE.instantiate()
 		elif(hazard_selection == 3):
+			if Global.warning1:
+				Global.warning1.visible = true
+			if Global.warning2:
+				Global.warning2.visible = true
+			if Global.warning3:
+				Global.warning3.visible = true
+			hazard_warning_timer.start()
 			chunk = TRAFFIC_ROAD_SCENE.instantiate()
 		
 		# restart the Hazard timer, could also randomize the timer length again here
@@ -108,6 +137,14 @@ func load_chunk() -> void:
 		# get the fuck out	
 		# load a final chunk
 		return
+
+func _hide_hazard_waring():
+	if Global.warning1:
+		Global.warning1.visible = false
+	if Global.warning2:
+		Global.warning2.visible = false
+	if Global.warning3:
+		Global.warning3.visible = false
 
 func load_new_road_chunk() -> void:
 	load_chunk()

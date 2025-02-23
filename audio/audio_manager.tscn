@@ -9,8 +9,8 @@ script = ExtResource("1_5l1vu")
 
 [node name="Music" type="Node" parent="."]
 
-[node name="MainMenu" type="AudioStreamPlayer2D" parent="Music"]
+[node name="MainMenu" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("2_vq6su")
 
-[node name="Gameplay" type="AudioStreamPlayer2D" parent="Music"]
+[node name="Gameplay" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_jk4u6")
