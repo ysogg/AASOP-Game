@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdveloynh1btc"]
+[gd_scene load_steps=7 format=3 uid="uid://bdveloynh1btc"]
 
 [ext_resource type="Script" path="res://ui/popup_menu.gd" id="1_5dvao"]
 [ext_resource type="Theme" uid="uid://c5k0stkptikm2" path="res://ui/themes/ui_theme.tres" id="2_2r630"]
 [ext_resource type="Script" path="res://ui/animation_component.gd" id="3_bhxie"]
+[ext_resource type="Script" path="res://ui/h_slider.gd" id="4_em2xl"]
+[ext_resource type="Texture2D" uid="uid://d2qgpq1vumudd" path="res://ui/volume.png" id="5_d8v6o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4nq8"]
 content_margin_bottom = 20.0
@@ -76,6 +78,26 @@ enter_easing = 2
 enter_position = Vector2(-500, 0)
 enter_scale = Vector2(0, 0)
 
+[node name="Button" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+button_mask = 0
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Button"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 8.0
+offset_right = 238.0
+offset_bottom = 33.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_em2xl")
+bus_name = "Master"
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Button"]
+position = Vector2(36, 20)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("5_d8v6o")
+
 [node name="Return" type="Button" parent="CenterContainer/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -110,4 +132,5 @@ enter_position = Vector2(-500, 0)
 enter_scale = Vector2(0, 0)
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="value_changed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Button/HSlider" to="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Button/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/PanelContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]
