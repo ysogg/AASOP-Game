@@ -1,16 +1,28 @@
-[gd_scene load_steps=94 format=4 uid="uid://blaf1ix5576p3"]
+[gd_scene load_steps=97 format=4 uid="uid://blaf1ix5576p3"]
 
 [ext_resource type="Script" path="res://interior/interact_zone.gd" id="1_a8rqw"]
-[ext_resource type="Texture2D" uid="uid://c2d484ysgerft" path="res://interior/assets/receiver_temp.png" id="2_2cjdu"]
 [ext_resource type="Shader" path="res://interior/Background.gdshader" id="2_5v6jv"]
 [ext_resource type="Script" path="res://interior/score_labels.gd" id="4_ri5i1"]
 [ext_resource type="Texture2D" uid="uid://dlqlb6v30g6nn" path="res://interior/assets/provider_temp.png" id="5_i1py1"]
+[ext_resource type="Texture2D" uid="uid://gcdglg73khjc" path="res://interior/assets/wrapped_wraps_full.png" id="6_efk48"]
+[ext_resource type="Texture2D" uid="uid://dk4m73kv2cg3q" path="res://interior/assets/empty_plate.png" id="6_w5ip2"]
 [ext_resource type="Texture2D" uid="uid://b6mphuldbe4ab" path="res://interior/assets/floor_tileset.png" id="7_1wecp"]
 [ext_resource type="Texture2D" uid="uid://u0oebs7jucei" path="res://interior/assets/two_tile_cuttingboard_station.png" id="7_43ej7"]
-[ext_resource type="Texture2D" uid="uid://degv20omq8edg" path="res://interior/assets/sink.png" id="7_gmmi8"]
+[ext_resource type="Texture2D" uid="uid://cwlga6n820uh1" path="res://interior/assets/raw_potatoes_full.png" id="7_kouw8"]
+[ext_resource type="Texture2D" uid="uid://4aaqetpddytk" path="res://interior/assets/empty_WRAPS.png" id="7_mcq7s"]
+[ext_resource type="Texture2D" uid="uid://bbbrnx18887rq" path="res://interior/assets/empty_fries.png" id="8_2xwet"]
 [ext_resource type="Texture2D" uid="uid://b3gxavvnaw8e7" path="res://interior/assets/stovetop.png" id="8_616m2"]
+[ext_resource type="Texture2D" uid="uid://ckmhpbrvd5po2" path="res://interior/assets/rawchickenfridge.png" id="8_hsp5x"]
 [ext_resource type="Texture2D" uid="uid://biw0eo3052w5x" path="res://interior/assets/mid_spit.png" id="9_f6nw2"]
+[ext_resource type="Texture2D" uid="uid://b8ui45cr773nb" path="res://interior/assets/empty_chicken.png" id="9_kxjwc"]
+[ext_resource type="Texture2D" uid="uid://jn47rsemdups" path="res://interior/assets/lettuce_fridge.png" id="9_qlpjr"]
+[ext_resource type="Texture2D" uid="uid://dpaspxwjj5gc4" path="res://interior/assets/tomato_fridge.png" id="10_65qte"]
+[ext_resource type="Texture2D" uid="uid://cq7g01w14kcfj" path="res://interior/assets/empty_lettuce.png" id="10_oxh4j"]
 [ext_resource type="Texture2D" uid="uid://oc44ciw5l7m6" path="res://interior/assets/door_temp.png" id="11_om60p"]
+[ext_resource type="Texture2D" uid="uid://b3iy1fajekp58" path="res://interior/assets/onion_fridge.png" id="11_sbvx2"]
+[ext_resource type="Texture2D" uid="uid://dqy4r1wgv5gi6" path="res://interior/assets/empty_tomato.png" id="11_th0nb"]
+[ext_resource type="Texture2D" uid="uid://d0xqcgidpm5py" path="res://interior/assets/empty_onion.png" id="12_wrddn"]
+[ext_resource type="Texture2D" uid="uid://dglrs63syf7gl" path="res://interior/assets/frier.png" id="21_vaxjx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agw5y"]
 texture = ExtResource("7_1wecp")
@@ -26,7 +38,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_agw5y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klw8q"]
-size = Vector2(1933, 191.5)
+size = Vector2(1933, 189.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mciq3"]
 size = Vector2(1933, 191.5)
@@ -49,7 +61,7 @@ shader_parameter/add_margins = true
 size = Vector2(61.9993, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd7tg"]
-size = Vector2(66.0002, 70)
+size = Vector2(62.72, 83.6267)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vasv1"]
 shader = ExtResource("2_5v6jv")
@@ -59,14 +71,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w8b7i"]
-load_path = "res://.godot/imported/provider_temp.png-43a4151c37abbba03347b9f125f8b887.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ymk1"]
-size = Vector2(61.9993, 62)
+size = Vector2(62.7203, 1.90735e-05)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_347tg"]
-size = Vector2(66.0002, 70)
+size = Vector2(65.9865, 84.9333)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oaoho"]
 shader = ExtResource("2_5v6jv")
@@ -76,14 +85,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5o5qv"]
-load_path = "res://.godot/imported/provider_temp.png-43a4151c37abbba03347b9f125f8b887.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ikp2"]
-size = Vector2(61.9993, 62)
+size = Vector2(62.7199, 5.72205e-05)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmv54"]
-size = Vector2(66.0002, 70)
+size = Vector2(65.9866, 84.9333)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_us6rx"]
 shader = ExtResource("2_5v6jv")
@@ -93,14 +99,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kt104"]
-load_path = "res://.godot/imported/provider_temp.png-43a4151c37abbba03347b9f125f8b887.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1kgw"]
-size = Vector2(61.9993, 62)
+size = Vector2(62.72, 86.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jojkp"]
-size = Vector2(66.0002, 70)
+size = Vector2(71.68, 116.76)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2qvp5"]
 shader = ExtResource("2_5v6jv")
@@ -110,14 +113,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uk6ug"]
-load_path = "res://.godot/imported/provider_temp.png-43a4151c37abbba03347b9f125f8b887.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13jpq"]
-size = Vector2(61.9993, 62)
+size = Vector2(62.72, 86.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7edp"]
-size = Vector2(66.0002, 70)
+size = Vector2(62.7201, 116.76)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cfqir"]
 shader = ExtResource("2_5v6jv")
@@ -127,14 +127,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_guedt"]
-load_path = "res://.godot/imported/provider_temp.png-43a4151c37abbba03347b9f125f8b887.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srbfb"]
-size = Vector2(61.9993, 62)
+size = Vector2(62.72, 86.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyajj"]
-size = Vector2(66.0002, 70)
+size = Vector2(62.72, 116.76)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vqpat"]
 shader = ExtResource("2_5v6jv")
@@ -144,14 +141,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yx73d"]
-load_path = "res://.godot/imported/provider_temp.png-43a4151c37abbba03347b9f125f8b887.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrvmm"]
-size = Vector2(61.9993, 62)
+size = Vector2(62.72, 86.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hp0iu"]
-size = Vector2(66.0002, 70)
+size = Vector2(65.52, 116.76)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5rj6g"]
 shader = ExtResource("2_5v6jv")
@@ -162,10 +156,10 @@ shader_parameter/inside = true
 shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3xk"]
-size = Vector2(32, 32)
+size = Vector2(32, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic7cu"]
-size = Vector2(32, 41)
+size = Vector2(34.6667, 41)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ah3bl"]
 shader = ExtResource("2_5v6jv")
@@ -176,10 +170,10 @@ shader_parameter/inside = true
 shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oa03x"]
-size = Vector2(32, 32)
+size = Vector2(32, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tf44"]
-size = Vector2(32, 41)
+size = Vector2(34.6667, 41)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dps3f"]
 shader = ExtResource("2_5v6jv")
@@ -189,14 +183,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gpc42"]
-load_path = "res://.godot/imported/receiver_temp.png-f7d8a4161bda95669e85b5625050b3ac.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y275f"]
-size = Vector2(32, 32)
+size = Vector2(32, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdgb5"]
-size = Vector2(32, 41)
+size = Vector2(34.6667, 41)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0bh8c"]
 shader = ExtResource("2_5v6jv")
@@ -206,14 +197,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pxirx"]
-load_path = "res://.godot/imported/receiver_temp.png-f7d8a4161bda95669e85b5625050b3ac.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phlcv"]
-size = Vector2(32, 32)
+size = Vector2(32, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24xdu"]
-size = Vector2(32, 41)
+size = Vector2(34.6667, 41)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ue4o"]
 shader = ExtResource("2_5v6jv")
@@ -223,14 +211,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uaw7m"]
-load_path = "res://.godot/imported/receiver_temp.png-f7d8a4161bda95669e85b5625050b3ac.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df1na"]
-size = Vector2(32, 32)
+size = Vector2(32, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tk1sl"]
-size = Vector2(32, 41)
+size = Vector2(34.6667, 41)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vmkoy"]
 shader = ExtResource("2_5v6jv")
@@ -240,14 +225,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3mvm3"]
-load_path = "res://.godot/imported/receiver_temp.png-f7d8a4161bda95669e85b5625050b3ac.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61fbc"]
-size = Vector2(32, 32)
+size = Vector2(32, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kwvv"]
-size = Vector2(32, 41)
+size = Vector2(34.6666, 41)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t70kk"]
 shader = ExtResource("2_5v6jv")
@@ -257,14 +239,11 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v62uq"]
-load_path = "res://.godot/imported/receiver_temp.png-f7d8a4161bda95669e85b5625050b3ac.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqwnu"]
-size = Vector2(32, 32)
+size = Vector2(32, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ac5r5"]
-size = Vector2(32, 41)
+size = Vector2(34.6667, 41)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27iso"]
 shader = ExtResource("2_5v6jv")
@@ -309,7 +288,7 @@ shader_parameter/add_margins = true
 size = Vector2(64, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4g866"]
-size = Vector2(72, 40)
+size = Vector2(35.1428, 40)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwmps"]
 shader = ExtResource("2_5v6jv")
@@ -323,7 +302,7 @@ shader_parameter/add_margins = true
 size = Vector2(64, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2upo1"]
-size = Vector2(72, 40)
+size = Vector2(35.1428, 40)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0q45w"]
 shader = ExtResource("2_5v6jv")
@@ -340,7 +319,7 @@ load_path = "res://.godot/imported/sink.png-c97d75451fec8e79fc4404980ada187b.cte
 size = Vector2(32, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35aaw"]
-size = Vector2(72, 40)
+size = Vector2(35.5714, 40)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ml2at"]
 shader = ExtResource("2_5v6jv")
@@ -354,7 +333,7 @@ shader_parameter/add_margins = true
 size = Vector2(32, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdte"]
-size = Vector2(72, 40)
+size = Vector2(53.7143, 50.2858)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3bkf"]
 shader = ExtResource("2_5v6jv")
@@ -369,6 +348,12 @@ size = Vector2(8, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bouhw"]
 size = Vector2(41.4286, 28.4496)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q5iix"]
+load_path = "res://.godot/imported/front_counter.png-2946b9bf2997e15c8e8deecf8a47938b.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4q3m"]
+size = Vector2(128, 19.4286)
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
@@ -393,12 +378,14 @@ color = Color(1, 0.734167, 0.45, 1)
 [node name="ScoreLabels" type="StaticBody2D" parent="."]
 
 [node name="CurrentScore" type="RichTextLabel" parent="ScoreLabels"]
-offset_left = 1015.0
-offset_top = 25.0
-offset_right = 1447.0
-offset_bottom = 65.0
+offset_left = 1485.0
+offset_top = 4.0
+offset_right = 1891.0
+offset_bottom = 44.0
+theme_override_font_sizes/normal_font_size = 26
 text = "Score: 0"
 script = ExtResource("4_ri5i1")
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
@@ -412,7 +399,7 @@ tile_set = SubResource("TileSet_rayb3")
 [node name="Back Wall" type="StaticBody2D" parent="Wall Folder"]
 
 [node name="Back Wall Collision" type="CollisionShape2D" parent="Wall Folder/Back Wall"]
-position = Vector2(960.5, 416)
+position = Vector2(960.5, 415.125)
 shape = SubResource("RectangleShape2D_klw8q")
 
 [node name="Bottom Wall" type="StaticBody2D" parent="Wall Folder"]
@@ -437,7 +424,7 @@ shape = SubResource("RectangleShape2D_eybg2")
 
 [node name="ItemProvider Plates" type="Sprite2D" parent="Providers Folder"]
 material = SubResource("ShaderMaterial_eme56")
-position = Vector2(222, 559)
+position = Vector2(114, 559)
 scale = Vector2(3, 3)
 texture = ExtResource("5_i1py1")
 
@@ -458,6 +445,7 @@ container_type = "dirty_plate"
 item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Plates/Interact"]
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_dd7tg")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -478,14 +466,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ItemProvider Wraps" type="Sprite2D" parent="Providers Folder"]
 material = SubResource("ShaderMaterial_vasv1")
-position = Vector2(1731, 825)
+position = Vector2(1870, 558)
 scale = Vector2(3, 3)
-texture = SubResource("CompressedTexture2D_w8b7i")
+texture = ExtResource("6_efk48")
 
 [node name="Collider" type="StaticBody2D" parent="Providers Folder/ItemProvider Wraps"]
 scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Wraps/Collider"]
+position = Vector2(-0.000244141, -31.36)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6ymk1")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Wraps"]
@@ -499,6 +489,8 @@ container_type = "bagged_wraps"
 item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Wraps/Interact"]
+position = Vector2(1.6333, 11.1067)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_347tg")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -519,14 +511,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ItemProvider Potatoes" type="Sprite2D" parent="Providers Folder"]
 material = SubResource("ShaderMaterial_oaoho")
-position = Vector2(1630, 801)
+position = Vector2(1774, 558)
 scale = Vector2(3, 3)
-texture = SubResource("CompressedTexture2D_5o5qv")
+texture = ExtResource("7_kouw8")
 
 [node name="Collider" type="StaticBody2D" parent="Providers Folder/ItemProvider Potatoes"]
 scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Potatoes/Collider"]
+position = Vector2(0, -31.36)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6ikp2")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Potatoes"]
@@ -540,6 +534,8 @@ container_type = "raw_potatoes"
 item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Potatoes/Interact"]
+position = Vector2(-1.63342, 11.1067)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pmv54")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -560,14 +556,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ItemProvider Chicken" type="Sprite2D" parent="Providers Folder"]
 material = SubResource("ShaderMaterial_us6rx")
-position = Vector2(1417, 556)
+position = Vector2(1313, 496)
 scale = Vector2(3.5, 3.5)
-texture = SubResource("CompressedTexture2D_kt104")
+texture = ExtResource("8_hsp5x")
 
 [node name="Collider" type="StaticBody2D" parent="Providers Folder/ItemProvider Chicken"]
 scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Chicken/Collider"]
+position = Vector2(-6.10352e-05, -19.3201)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_e1kgw")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Chicken"]
@@ -581,6 +579,8 @@ container_type = "raw_chicken"
 item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Chicken/Interact"]
+position = Vector2(-4.47998, 23.38)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jojkp")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -601,14 +601,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ItemProvider Lettuce" type="Sprite2D" parent="Providers Folder"]
 material = SubResource("ShaderMaterial_2qvp5")
-position = Vector2(1535, 556)
+position = Vector2(1425, 496)
 scale = Vector2(3.5, 3.5)
-texture = SubResource("CompressedTexture2D_uk6ug")
+texture = ExtResource("9_qlpjr")
 
 [node name="Collider" type="StaticBody2D" parent="Providers Folder/ItemProvider Lettuce"]
 scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Lettuce/Collider"]
+position = Vector2(-6.10352e-05, -19.32)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_13jpq")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Lettuce"]
@@ -622,6 +624,8 @@ container_type = "uncut_lettuce"
 item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Lettuce/Interact"]
+position = Vector2(-6.10352e-05, 23.38)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_w7edp")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -642,14 +646,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ItemProvider Tomato" type="Sprite2D" parent="Providers Folder"]
 material = SubResource("ShaderMaterial_cfqir")
-position = Vector2(1653, 556)
+position = Vector2(1537, 496)
 scale = Vector2(3.5, 3.5)
-texture = SubResource("CompressedTexture2D_guedt")
+texture = ExtResource("10_65qte")
 
 [node name="Collider" type="StaticBody2D" parent="Providers Folder/ItemProvider Tomato"]
 scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Tomato/Collider"]
+position = Vector2(-6.10352e-05, -19.3201)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_srbfb")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Tomato"]
@@ -663,6 +669,8 @@ container_type = "uncut_tomato"
 item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Tomato/Interact"]
+position = Vector2(-6.10352e-05, 23.38)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jyajj")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -683,14 +691,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ItemProvider Onion" type="Sprite2D" parent="Providers Folder"]
 material = SubResource("ShaderMaterial_vqpat")
-position = Vector2(1771, 556)
+position = Vector2(1649, 496)
 scale = Vector2(3.5, 3.5)
-texture = SubResource("CompressedTexture2D_yx73d")
+texture = ExtResource("11_sbvx2")
 
 [node name="Collider" type="StaticBody2D" parent="Providers Folder/ItemProvider Onion"]
 scale = Vector2(0.510204, 0.510204)
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Onion/Collider"]
+position = Vector2(-6.10352e-05, -19.32)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nrvmm")
 
 [node name="Interact" type="Area2D" parent="Providers Folder/ItemProvider Onion"]
@@ -704,6 +714,8 @@ container_type = "raw_onion"
 item_provider = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Providers Folder/ItemProvider Onion/Interact"]
+position = Vector2(1.3999, 23.38)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hp0iu")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -726,14 +738,16 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(0, -9)
 
 [node name="ItemReceiver Plates" type="Sprite2D" parent="Receivers Folder"]
+z_index = 2
 material = SubResource("ShaderMaterial_5rj6g")
-position = Vector2(1110, 1032)
+position = Vector2(1216, 1032)
 scale = Vector2(3, 3)
-texture = ExtResource("2_2cjdu")
+texture = ExtResource("6_w5ip2")
 
 [node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver Plates"]
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Plates/Collider"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_3s3xk")
 
 [node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver Plates"]
@@ -760,14 +774,16 @@ text = "Plates"
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemReceiver Wraps" type="Sprite2D" parent="Receivers Folder"]
+z_index = 2
 material = SubResource("ShaderMaterial_ah3bl")
-position = Vector2(1214, 1032)
+position = Vector2(1320, 1032)
 scale = Vector2(3, 3)
-texture = ExtResource("2_2cjdu")
+texture = ExtResource("7_mcq7s")
 
 [node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver Wraps"]
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Wraps/Collider"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_oa03x")
 
 [node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver Wraps"]
@@ -794,14 +810,16 @@ text = "Wraps"
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemReceiver Fries" type="Sprite2D" parent="Receivers Folder"]
+z_index = 2
 material = SubResource("ShaderMaterial_dps3f")
-position = Vector2(1318, 1032)
+position = Vector2(1424, 1032)
 scale = Vector2(3, 3)
-texture = SubResource("CompressedTexture2D_gpc42")
+texture = ExtResource("8_2xwet")
 
 [node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver Fries"]
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Fries/Collider"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_y275f")
 
 [node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver Fries"]
@@ -831,14 +849,16 @@ text = "Fries"
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemReceiver Chicken" type="Sprite2D" parent="Receivers Folder"]
+z_index = 2
 material = SubResource("ShaderMaterial_0bh8c")
-position = Vector2(1422, 1032)
+position = Vector2(1528, 1032)
 scale = Vector2(3, 3)
-texture = SubResource("CompressedTexture2D_pxirx")
+texture = ExtResource("9_kxjwc")
 
 [node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver Chicken"]
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Chicken/Collider"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_phlcv")
 
 [node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver Chicken"]
@@ -868,14 +888,16 @@ text = "Chicken"
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemReceiver Lettuce" type="Sprite2D" parent="Receivers Folder"]
+z_index = 2
 material = SubResource("ShaderMaterial_1ue4o")
-position = Vector2(1526, 1032)
+position = Vector2(1632, 1032)
 scale = Vector2(3, 3)
-texture = SubResource("CompressedTexture2D_uaw7m")
+texture = ExtResource("10_oxh4j")
 
 [node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver Lettuce"]
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Lettuce/Collider"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_df1na")
 
 [node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver Lettuce"]
@@ -888,7 +910,7 @@ container_type = "lettuce"
 item_receiver = true
 
 [node name="Interaction Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Lettuce/Interact"]
-position = Vector2(0, -4.5)
+position = Vector2(0.00012207, -4.5)
 shape = SubResource("RectangleShape2D_tk1sl")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -905,14 +927,16 @@ text = "Lettuce"
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemReceiver Tomato" type="Sprite2D" parent="Receivers Folder"]
+z_index = 2
 material = SubResource("ShaderMaterial_vmkoy")
-position = Vector2(1630, 1032)
+position = Vector2(1736, 1032)
 scale = Vector2(3, 3)
-texture = SubResource("CompressedTexture2D_3mvm3")
+texture = ExtResource("11_th0nb")
 
 [node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver Tomato"]
 
 [node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Tomato/Collider"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_61fbc")
 
 [node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver Tomato"]
@@ -941,18 +965,20 @@ offset_bottom = 15.5
 text = "Tomato"
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemReceiver onion" type="Sprite2D" parent="Receivers Folder"]
+[node name="ItemReceiver Onion" type="Sprite2D" parent="Receivers Folder"]
+z_index = 2
 material = SubResource("ShaderMaterial_t70kk")
-position = Vector2(1734, 1032)
+position = Vector2(1840, 1032)
 scale = Vector2(3, 3)
-texture = SubResource("CompressedTexture2D_v62uq")
+texture = ExtResource("12_wrddn")
 
-[node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver onion"]
+[node name="Collider" type="StaticBody2D" parent="Receivers Folder/ItemReceiver Onion"]
 
-[node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver onion/Collider"]
+[node name="Collision Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Onion/Collider"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_aqwnu")
 
-[node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver onion"]
+[node name="Interact" type="Area2D" parent="Receivers Folder/ItemReceiver Onion"]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
@@ -961,12 +987,12 @@ interact_label = "OnionReceiver"
 container_type = "onion"
 item_receiver = true
 
-[node name="Interaction Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver onion/Interact"]
+[node name="Interaction Zone" type="CollisionShape2D" parent="Receivers Folder/ItemReceiver Onion/Interact"]
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_ac5r5")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
-[node name="Label" type="Label" parent="Receivers Folder/ItemReceiver onion"]
+[node name="Label" type="Label" parent="Receivers Folder/ItemReceiver Onion"]
 visible = false
 anchors_preset = -1
 anchor_left = -0.3125
@@ -982,7 +1008,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PrepTable1" type="Sprite2D" parent="Prep Tables Folder"]
 material = SubResource("ShaderMaterial_27iso")
-position = Vector2(612, 552)
+position = Vector2(670, 552)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("7_43ej7")
 
@@ -1001,6 +1027,7 @@ interact_label = "Table1"
 container_type = "any"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepTable1/Interact"]
 shape = SubResource("RectangleShape2D_48cea")
@@ -1008,7 +1035,7 @@ debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="PrepTable2" type="Sprite2D" parent="Prep Tables Folder"]
 material = SubResource("ShaderMaterial_nn8hj")
-position = Vector2(864, 552)
+position = Vector2(418, 552)
 scale = Vector2(3.5, 3.5)
 texture = SubResource("CompressedTexture2D_364nb")
 
@@ -1035,7 +1062,7 @@ debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="PrepStove" type="Sprite2D" parent="Prep Tables Folder"]
 material = SubResource("ShaderMaterial_mrv2f")
-position = Vector2(1116, 552)
+position = Vector2(968, 552)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("8_616m2")
 
@@ -1054,16 +1081,19 @@ interact_label = "Stove"
 container_type = "cut_onion"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepStove/Interact"]
+position = Vector2(-1.5715, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4g866")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="PrepFryer" type="Sprite2D" parent="Prep Tables Folder"]
 material = SubResource("ShaderMaterial_mwmps")
-position = Vector2(1242, 553)
+position = Vector2(1080, 552)
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("7_gmmi8")
+texture = ExtResource("21_vaxjx")
 
 [node name="Collider" type="StaticBody2D" parent="Prep Tables Folder/PrepFryer"]
 
@@ -1080,14 +1110,17 @@ interact_label = "Fryer"
 container_type = "raw_fries"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepFryer/Interact"]
+position = Vector2(1.57144, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2upo1")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="PrepSink" type="Sprite2D" parent="Prep Tables Folder"]
 material = SubResource("ShaderMaterial_0q45w")
-position = Vector2(354, 553)
+position = Vector2(218, 552)
 scale = Vector2(3.5, 3.5)
 texture = SubResource("CompressedTexture2D_2syn7")
 
@@ -1106,14 +1139,17 @@ interact_label = "Sink"
 container_type = "dirty_plate"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepSink/Interact"]
+position = Vector2(1.78571, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_35aaw")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
 [node name="PrepSpit" type="Sprite2D" parent="Prep Tables Folder"]
 material = SubResource("ShaderMaterial_ml2at")
-position = Vector2(746, 793)
+position = Vector2(544, 815)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("9_f6nw2")
 
@@ -1132,8 +1168,11 @@ interact_label = "Spit"
 container_type = "raw_chicken"
 item_provider = true
 item_receiver = true
+mashable = true
 
 [node name="Interact Zone" type="CollisionShape2D" parent="Prep Tables Folder/PrepSpit/Interact"]
+position = Vector2(1.52588e-05, -1.52588e-05)
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_nkdte")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
 
@@ -1159,3 +1198,16 @@ interact_label = "Door"
 [node name="Interact Zone" type="CollisionShape2D" parent="Door/Interact"]
 shape = SubResource("RectangleShape2D_bouhw")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
+
+[node name="Front Counter" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(896, 1015)
+scale = Vector2(3.5, 3.5)
+texture = SubResource("CompressedTexture2D_q5iix")
+
+[node name="Collider" type="StaticBody2D" parent="Front Counter"]
+
+[node name="Collision Zone" type="CollisionShape2D" parent="Front Counter/Collider"]
+position = Vector2(-4.57764e-05, 6.2858)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_m4q3m")

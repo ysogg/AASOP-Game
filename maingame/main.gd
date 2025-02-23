@@ -39,6 +39,12 @@ func transition_scene(inside: bool) -> void:
 	if inside:
 		Global.movement_lock = true
 		inside_scene.visible = false
+		if Global.warning1:
+			Global.warning1.visible = false
+		if Global.warning2:
+			Global.warning2.visible = false
+		if Global.warning3:
+			Global.warning3.visible = false
 		outside_scene.reparent(self)
 		move_child(outside_scene, 1)
 		transition_to_outside.emit()

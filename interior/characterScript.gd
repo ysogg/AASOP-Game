@@ -14,6 +14,15 @@ class_name Player extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var loading_bar: Sprite2D = $LoadingBar
 
+#@onready var chicken_receiver = get_node("../Node2D/Receivers Folder/ItemReceiver Chicken/Interact")
+@onready var receiver_list = [
+	get_node("../Node2D/Receivers Folder/ItemReceiver Plates/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Wraps/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Fries/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Lettuce/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Tomato/Interact"),
+	get_node("../Node2D/Receivers Folder/ItemReceiver Onion/Interact"),
+]
 
 signal dropped_item
 signal picked_up_item
@@ -33,6 +42,24 @@ var can_dash: bool = true
 var dash_cooldown: float = 0.5
 
 const DASH_PARTICLES = preload("res://interior/character/dash_particles.tscn")
+
+func _ready():
+	if get_tree().get_first_node_in_group("Truck"):
+		var truck = get_tree().get_first_node_in_group("Truck")
+		truck.truck_hit.connect(_on_truck_hit)
+	
+	#print(receiver_list)
+
+func _on_truck_hit():
+	var rand = RandomNumberGenerator.new()
+	for rec in receiver_list:
+		if rec.container_status == "full":
+			var num = rand.randf_range(0, 100)
+			if num > 60:
+				rec.container_status = "empty"
+				#spawn item on ground
+				dropped_item.emit(rec.container_type, rec.global_position + Vector2(0,-75))
+				
 
 func get_input():
 	if is_task_active:
@@ -93,8 +120,9 @@ func _updateSpeed():
 	particles.queue_free()
 
 func _interact():
-	if all_interactions[0].interact_label == "Door":
-		door_pressed.emit()
+	if all_interactions:
+		if all_interactions[0].interact_label == "Door":
+			door_pressed.emit()
 		
 	var in_provider = false
 	var in_receiver = false
@@ -143,7 +171,7 @@ func _interact():
 				print("Picked up: " + all_interactions[0].container_type)
 				Global.held_object = all_interactions[0].container_type
 		elif in_receiver && Global.held_object:
-			if all_interactions[0].container_type == Global.held_object:
+			if all_interactions[0].container_type == Global.held_object && !container_full:
 				print("Deposited: " + Global.held_object)
 				all_interactions[0].container_status = "full"
 				Global.held_object = ""
@@ -236,6 +264,17 @@ func task_completed():
 	loading_bar.visible = false
 	for zone in all_interactions:
 		if zone.interact_label == "PlacedItem":
+			if zone.mashed == true:
+				zone.cooked = true
 			zone.mashed = true
+			if zone.item_type == "dirty_plate": zone.item_type = "plates"
+			elif zone.item_type == "bagged_wraps": zone.item_type = "wraps"
+			elif zone.item_type == "raw_potatoes": zone.item_type = "raw_fries"
+			elif zone.item_type == "raw_fries": zone.item_type = "fries"
+			elif zone.item_type == "raw_chicken": zone.item_type = "chicken"
+			elif zone.item_type == "uncut_lettuce": zone.item_type = "lettuce"
+			elif zone.item_type == "uncut_tomato": zone.item_type = "tomato"
+			elif zone.item_type == "raw_onion": zone.item_type = "cut_onion"
+			elif zone.item_type == "cut_union": zone.item_type = "onion"
 			print("TRUED")
 	print("Task Done!")
