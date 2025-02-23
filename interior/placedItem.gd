@@ -16,7 +16,7 @@ func _on_placed_item(area, type, pos) -> void:
 	var item_scene = load("res://interior/PlacedItem.tscn")
 	var instance = item_scene.instantiate()
 	instance.get_node("Sprite2D").texture = load("res://interior/assets/" + type + ".png")
-	instance.position = pos + Vector2(0, -22)
+	instance.position = pos + Vector2(0, -26)
 	add_child(instance)
 #
 	instance.get_node("Sprite2D/Item").item_type = Global.held_object

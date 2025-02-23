@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 600
 @export var dash_speed: float = 1600
 @export var dash_duration: float = 0.2
 
@@ -59,7 +59,7 @@ func _on_truck_hit():
 			if num > 60:
 				rec.container_status = "empty"
 				#spawn item on ground
-				dropped_item.emit(rec.container_type, rec.global_position + Vector2(0,-75))
+				dropped_item.emit(rec.container_type, rec.global_position + Vector2(0,-125))
 				
 
 func get_input():
@@ -289,7 +289,6 @@ func task_completed():
 	loading_bar.visible = false
 	for zone in all_interactions:
 		if zone.interact_label == "PlacedItem":
-
 			zone.mashed = true
 			if zone.item_type == "dirty_plate": zone.item_type = "plates"
 			elif zone.item_type == "bagged_wraps": zone.item_type = "wraps"
