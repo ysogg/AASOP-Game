@@ -199,6 +199,7 @@ func _interact():
 			print("nuh uh")
 			if door_open:
 				AudioManager.play_door()
+				door_open = false
 				return
 			AudioManager.play_err()
 	else:
