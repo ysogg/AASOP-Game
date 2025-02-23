@@ -18,6 +18,5 @@ script = ExtResource("2_mi23o")
 interact_label = "GroundItem"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Item"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_lpgd5")
 debug_color = Color(0, 0.646164, 0.243608, 0.42)
